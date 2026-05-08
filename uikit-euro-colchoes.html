@@ -1,0 +1,2958 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Euro Colchões · UI Kit · Sistema visual e de componentes</title>
+<meta name="description" content="UI Kit oficial da Euro Colchões. Sistema visual, componentes e diretrizes para e-commerce, landing pages e criativos." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<meta name="theme-color" content="#AC2629" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   EURO COLCHÕES · UI KIT v0.2
+   Sistema visual standalone · base 8px · posicionamento premium
+   Tipografia: DM Serif Display (display) + Roboto (texto)
+   Cores oficiais: vermelho #AC2629 · azul #344D66
+   ===================================================================== */
+
+:root {
+  /* ───── Marca · Vermelho (#AC2629) ───── */
+  --red-50:  #FBEAEA;
+  --red-100: #F4C8C9;
+  --red-200: #E69598;
+  --red-300: #D26266;
+  --red-400: #BD3D42;
+  --red-500: #AC2629;   /* oficial */
+  --red-600: #8E1F22;
+  --red-700: #6F181A;
+  --red-800: #501113;
+  --red-900: #2D090A;
+
+  /* ───── Marca · Azul (#344D66) ───── */
+  --blue-50:  #E8ECF1;
+  --blue-100: #C7D0DB;
+  --blue-200: #9FAEC0;
+  --blue-300: #768BA4;
+  --blue-400: #556F8A;
+  --blue-500: #344D66;   /* oficial */
+  --blue-600: #2A3F54;
+  --blue-700: #1F3041;
+  --blue-800: #15212E;
+  --blue-900: #0A1219;
+
+  /* ───── Champagne · acento premium (extraído da hero do site) ───── */
+  --gold-50:  #FAF4EB;
+  --gold-100: #F0E1C8;
+  --gold-300: #D9B985;
+  --gold-500: #B89058;
+  --gold-700: #7E5E33;
+
+  /* ───── Neutros ───── */
+  --ink-0:   #FFFFFF;
+  --ink-50:  #FAFAF8;
+  --ink-100: #F2F0EC;
+  --ink-200: #E4E1DC;
+  --ink-300: #C9C5BD;
+  --ink-400: #9E9A91;
+  --ink-500: #6B675F;
+  --ink-600: #4B4842;
+  --ink-700: #2F2D29;
+  --ink-800: #1C1B18;
+  --ink-900: #0F0E0C;
+
+  /* ───── Semânticas ───── */
+  --success-500: #2E7D5B;
+  --warning-500: #C08A2A;
+  --danger-500:  #AC2629;
+  --info-500:    #3B5C7A;
+
+  /* ───── Tokens de e-commerce (aliases semânticos) ───── */
+  --price-from:        var(--ink-500);
+  --price-to:          var(--ink-900);
+  --price-discount:    var(--red-500);
+  --installment:       var(--ink-700);
+  --installment-tag:   var(--success-500);
+  --tag-edition:       var(--gold-700);
+  --tag-quality:       var(--blue-500);
+  --tag-bestseller:    var(--red-500);
+
+  /* ───── Tipografia ───── */
+  --font-display: "DM Serif Display", "Playfair Display", Georgia, serif;
+  --font-text:    "Roboto", "Helvetica Neue", system-ui, sans-serif;
+  --font-numeric: "Roboto", ui-monospace, monospace;
+
+  --fs-12: 0.75rem;   --lh-12: 1.1rem;
+  --fs-14: 0.875rem;  --lh-14: 1.3rem;
+  --fs-16: 1rem;      --lh-16: 1.55rem;
+  --fs-18: 1.125rem;  --lh-18: 1.65rem;
+  --fs-20: 1.25rem;   --lh-20: 1.75rem;
+  --fs-24: 1.5rem;    --lh-24: 2rem;
+  --fs-32: 2rem;      --lh-32: 2.25rem;
+  --fs-40: 2.5rem;    --lh-40: 2.75rem;
+  --fs-56: 3.5rem;    --lh-56: 3.75rem;
+  --fs-72: 4.5rem;    --lh-72: 4.6rem;
+  --fs-96: 6rem;      --lh-96: 5.85rem;
+
+  /* ───── Espaçamento (base 8px estrita) ───── */
+  --s-0:  0;
+  --s-1:  8px;
+  --s-2:  16px;
+  --s-3:  24px;
+  --s-4:  32px;
+  --s-5:  40px;
+  --s-6:  48px;
+  --s-7:  56px;
+  --s-8:  64px;
+  --s-9:  80px;
+  --s-10: 96px;
+  --s-11: 128px;
+  --s-12: 160px;
+  --s-13: 192px;
+
+  /* ───── Raios ───── */
+  --r-0:   0;
+  --r-sm:  2px;
+  --r-md:  4px;
+  --r-lg:  8px;
+  --r-xl:  16px;
+  --r-pill: 999px;
+
+  /* ───── Sombras ───── */
+  --shadow-1: 0 1px 2px rgba(15,14,12,0.04), 0 1px 3px rgba(15,14,12,0.06);
+  --shadow-2: 0 4px 16px rgba(15,14,12,0.06), 0 8px 24px rgba(15,14,12,0.04);
+  --shadow-3: 0 12px 32px rgba(15,14,12,0.10), 0 24px 64px rgba(15,14,12,0.08);
+  --shadow-cta: 0 6px 20px rgba(172,38,41,0.32);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.04);
+
+  /* ───── Layout ───── */
+  --container: 1240px;
+  --gutter: 24px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+body {
+  font-family: var(--font-text);
+  font-weight: 400;
+  color: var(--ink-900);
+  background: var(--ink-50);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+  width: 100%;
+  position: relative;
+  /* sem overflow-x · evita quebrar position:fixed em iOS/Safari */
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+a { color: var(--blue-500); text-decoration: none; }
+a:hover { text-decoration: underline; }
+em, .italic { font-style: italic; }
+
+.serif { font-family: var(--font-display); font-weight: 400; }
+
+/* ===== Layout ===== */
+.doc {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+  transition: grid-template-columns .35s var(--ease);
+}
+body.menu-collapsed .doc { grid-template-columns: 0 1fr; }
+
+/* ===== Toggle button ===== */
+.menu-toggle {
+  position: fixed;
+  top: 16px; left: 16px;
+  width: 44px; height: 44px;
+  border-radius: var(--r-md);
+  background: var(--ink-900);
+  color: var(--ink-0);
+  display: grid; place-items: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(15,14,12,0.18), 0 6px 20px rgba(15,14,12,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s var(--ease), transform .15s var(--ease);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
+  will-change: transform;
+}
+.menu-toggle:hover { background: var(--ink-800); }
+.menu-toggle:active { transform: scale(0.96); }
+.menu-toggle svg { width: 22px; height: 22px; stroke-width: 1.75; }
+.menu-toggle .ico-open  { display: none; }
+.menu-toggle .ico-close { display: block; }
+body.menu-collapsed .menu-toggle .ico-open  { display: block; }
+body.menu-collapsed .menu-toggle .ico-close { display: none; }
+
+/* ===== Sidebar ===== */
+.sidebar {
+  background: var(--ink-900);
+  color: var(--ink-100);
+  padding: var(--s-5) var(--s-3);
+  padding-top: 72px;
+  position: sticky; top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 1px solid var(--ink-800);
+  transition: opacity .25s var(--ease), transform .35s var(--ease);
+}
+body.menu-collapsed .sidebar {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+.sidebar .brand {
+  display: block;
+  margin-bottom: var(--s-1);
+  padding: 0 8px;
+}
+.sidebar .brand img {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+.sidebar .meta {
+  font-size: var(--fs-12);
+  color: var(--ink-400);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--s-5);
+  text-transform: uppercase;
+}
+.sidebar nav ul { list-style: none; }
+.sidebar nav > ul > li { margin-bottom: var(--s-3); }
+.sidebar nav h4 {
+  font-family: var(--font-text);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--s-1);
+  padding: 0 8px;
+}
+.sidebar nav a {
+  display: block;
+  padding: 6px 8px;
+  font-size: var(--fs-14);
+  color: var(--ink-200);
+  border-left: 2px solid transparent;
+  transition: all .2s var(--ease);
+}
+.sidebar nav a:hover {
+  background: rgba(255,255,255,0.04);
+  text-decoration: none;
+  color: var(--ink-0);
+  border-left-color: var(--gold-500);
+}
+
+/* ===== Main ===== */
+.main { padding: var(--s-8) var(--s-7); max-width: 1140px; }
+.section { margin-bottom: var(--s-9); scroll-margin-top: var(--s-2); }
+.section > header { margin-bottom: var(--s-6); max-width: 720px; }
+.section > header .eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin-bottom: var(--s-2);
+  padding-bottom: var(--s-1);
+  border-bottom: 1px solid var(--gold-300);
+}
+.section > header h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-56);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  margin-bottom: var(--s-2);
+}
+.section > header h2 em { color: var(--red-500); }
+.section > header p {
+  font-size: var(--fs-18);
+  color: var(--ink-600);
+  max-width: 64ch;
+  font-weight: 300;
+}
+
+.sub { margin-top: var(--s-7); margin-bottom: var(--s-3); max-width: 64ch; }
+.sub h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-32);
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin-bottom: 6px;
+}
+.sub p { font-size: var(--fs-14); color: var(--ink-600); }
+
+/* ============== COVER ============== */
+.cover {
+  position: relative;
+  isolation: isolate;
+  color: var(--ink-0);
+  border-radius: var(--r-md);
+  padding: var(--s-11) var(--s-8) var(--s-9);
+  margin-bottom: var(--s-9);
+  overflow: hidden;
+  border: 1px solid var(--ink-800);
+  background: var(--blue-900);
+}
+.cover::before {
+  content: ""; position: absolute; inset: -40px;
+  background-image: url("assets/hero-1.jpg");
+  background-size: cover; background-position: center;
+  filter: blur(24px) saturate(1.05);
+  opacity: 0.45;
+  z-index: 0;
+}
+.cover::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,18,25,0.55), rgba(31,48,65,0.78));
+  z-index: 0;
+}
+.cover > * { position: relative; z-index: 1; }
+.cover .eyebrow {
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold-300); margin-bottom: var(--s-3);
+  display: inline-flex; align-items: center; gap: var(--s-1);
+}
+.cover .eyebrow::after { content: ""; display: inline-block; width: 32px; height: 1px; background: var(--gold-300); }
+.cover h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-96);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 22ch;
+  margin-bottom: var(--s-3);
+}
+.cover h1 em { color: var(--gold-300); }
+.cover .lead {
+  font-size: var(--fs-20);
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+  max-width: 56ch;
+  margin-bottom: var(--s-7);
+}
+.cover .footer-row {
+  display: flex; gap: var(--s-5); flex-wrap: wrap;
+  padding-top: var(--s-4);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: var(--fs-12);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.52);
+}
+.cover .footer-row span strong { color: var(--ink-0); font-weight: 500; }
+
+/* ============== Painéis & estruturas ============== */
+.panel {
+  background: var(--ink-0);
+  border-radius: var(--r-md);
+  border: 1px solid var(--ink-200);
+  padding: var(--s-5);
+}
+.panel--quiet { background: var(--ink-50); }
+.panel--dark { background: var(--ink-900); color: var(--ink-100); border-color: var(--ink-800); }
+
+.preview-grid {
+  display: grid; gap: var(--s-3);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.principle {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  position: relative;
+}
+.principle .num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-32);
+  color: var(--gold-500);
+  line-height: 1;
+  margin-bottom: var(--s-2);
+}
+.principle h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-20);
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin-bottom: 4px;
+}
+.principle p { font-size: var(--fs-14); color: var(--ink-600); line-height: 1.55; }
+
+/* ============== CORES · faixa gradiente ============== */
+.color-rail {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  margin-bottom: var(--s-3);
+}
+.color-rail__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: var(--s-3);
+}
+.color-rail__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-24);
+  letter-spacing: -0.01em;
+}
+.color-rail__title em { color: var(--gold-700); font-style: italic; }
+.color-rail__hex {
+  font-family: var(--font-numeric);
+  font-size: var(--fs-12);
+  color: var(--ink-500);
+  letter-spacing: 0.08em;
+}
+.color-rail__bar {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 96px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--ink-200);
+}
+.color-rail__bar > div {
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 8px;
+  font-family: var(--font-numeric);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.color-rail__bar > div .step { font-weight: 500; }
+.color-rail__bar > div .hex { opacity: 0.7; font-size: 10px; }
+
+/* ============== TIPOGRAFIA ============== */
+.type-row {
+  display: grid; grid-template-columns: 120px 1fr 220px;
+  gap: var(--s-3); align-items: baseline;
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--ink-200);
+}
+.type-row .label {
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-500); text-transform: uppercase; letter-spacing: 0.12em;
+}
+.type-row .specs {
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-500); text-align: right;
+}
+
+/* ============== ESPAÇAMENTO ============== */
+.space-row {
+  display: grid; grid-template-columns: 80px 1fr 80px;
+  gap: var(--s-3); align-items: center;
+  padding: var(--s-1) 0;
+  border-bottom: 1px solid var(--ink-200);
+  min-height: 32px;
+}
+.space-row .label, .space-row .px {
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-600); letter-spacing: 0.04em;
+}
+.space-row .px { color: var(--ink-900); font-weight: 500; }
+.space-demo { display: flex; align-items: center; }
+.space-demo .b {
+  width: 24px; height: 24px;
+  background: var(--blue-500);
+  border-radius: 1px;
+  flex: 0 0 24px;
+}
+.space-demo .gap {
+  height: 24px;
+  background:
+    repeating-linear-gradient(45deg,
+      rgba(184,144,88,0.18) 0 4px,
+      transparent 4px 8px);
+  border-top: 1px dashed var(--gold-500);
+  border-bottom: 1px dashed var(--gold-500);
+  flex: 0 0 auto;
+}
+
+/* ============== RAIOS / SOMBRAS · vitrine ============== */
+.vitrine {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--ink-100);
+  border-radius: var(--r-md);
+}
+.vitrine-card {
+  background: var(--ink-0);
+  padding: var(--s-3);
+  display: flex; flex-direction: column; gap: var(--s-2);
+  align-items: flex-start;
+}
+.vitrine-card .demo {
+  width: 100%; height: 96px;
+  background: linear-gradient(135deg, var(--ink-100), var(--ink-200));
+}
+.vitrine-card .label {
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-500); letter-spacing: 0.06em;
+}
+.vitrine-card .name {
+  font-family: var(--font-display); font-size: var(--fs-18);
+  color: var(--ink-900);
+}
+
+/* ============== GRID · réguas ============== */
+.grid-rule {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+}
+.grid-rule__bar {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  position: relative;
+}
+.grid-rule__col {
+  height: 280px;
+  background: linear-gradient(180deg, rgba(52,77,102,0.06), rgba(52,77,102,0));
+  border-top: 1px solid var(--blue-300);
+  border-bottom: 1px solid var(--blue-300);
+  position: relative;
+}
+.grid-rule__col::before {
+  content: attr(data-n);
+  position: absolute; top: -22px; left: 0;
+  font-family: var(--font-numeric); font-size: 10px;
+  color: var(--ink-500); letter-spacing: 0.06em;
+}
+.grid-rule__legend {
+  display: flex; justify-content: space-between;
+  margin-top: var(--s-3);
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-500); letter-spacing: 0.06em;
+}
+
+/* ============== BOTÕES ============== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px;
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: var(--fs-16);
+  line-height: 1;
+  padding: 14px 28px;
+  border-radius: var(--r-md);
+  letter-spacing: 0.02em;
+  transition: transform .12s var(--ease), background .15s var(--ease), box-shadow .15s var(--ease);
+  white-space: nowrap;
+  text-transform: none;
+}
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--red-500); color: var(--ink-0); box-shadow: var(--shadow-cta); }
+.btn--primary:hover { background: var(--red-600); }
+.btn--secondary { background: var(--blue-500); color: var(--ink-0); }
+.btn--secondary:hover { background: var(--blue-700); }
+.btn--ghost-light { background: transparent; color: var(--ink-0); border: 1px solid rgba(255,255,255,0.5); }
+.btn--ghost-light:hover { background: rgba(255,255,255,0.08); border-color: var(--ink-0); }
+.btn--ghost { background: transparent; color: var(--blue-500); border: 1px solid var(--blue-500); }
+.btn--ghost:hover { background: var(--blue-50); }
+.btn--whisper { background: var(--ink-100); color: var(--ink-800); }
+.btn--whisper:hover { background: var(--ink-200); }
+.btn--lg { font-size: var(--fs-18); padding: 18px 32px; }
+.btn--sm { font-size: var(--fs-14); padding: 10px 18px; }
+.btn--block { width: 100%; }
+
+/* ============== BADGES PREMIUM ============== */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-text);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+/* Etiqueta editorial · borda fina, fundo limpo */
+.badge--edition {
+  border: 1px solid var(--gold-700);
+  color: var(--gold-700);
+  background: var(--gold-50);
+}
+.badge--quality {
+  border: 1px solid var(--blue-500);
+  color: var(--blue-500);
+  background: transparent;
+}
+.badge--limited {
+  background: var(--ink-900); color: var(--gold-300);
+}
+.badge--bestseller {
+  background: var(--red-500); color: var(--ink-0);
+}
+.badge--made {
+  border-top: 1px solid var(--ink-700);
+  border-bottom: 1px solid var(--ink-700);
+  color: var(--ink-700);
+  padding: 6px 14px;
+  background: transparent;
+}
+.badge--sealed {
+  background: var(--ink-0); color: var(--ink-900);
+  border: 1px solid var(--ink-300);
+  font-family: var(--font-display); font-style: italic;
+  letter-spacing: 0;
+  text-transform: none; font-size: var(--fs-14);
+  padding: 4px 14px 6px;
+}
+/* ============== ÍCONES ============== */
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0;
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--ink-0);
+}
+.icon-cell {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: var(--s-3) var(--s-2);
+  border-right: 1px solid var(--ink-200);
+  border-bottom: 1px solid var(--ink-200);
+  background: var(--ink-0);
+  transition: background .2s var(--ease);
+}
+.icon-cell:hover { background: var(--ink-50); }
+.icon-cell svg {
+  width: 28px; height: 28px;
+  color: var(--ink-800);
+  stroke-width: 1.5;
+}
+.icon-cell .name {
+  font-family: var(--font-numeric);
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.04em;
+  text-align: center;
+  word-break: break-word;
+}
+.icon-category {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-top: var(--s-5); margin-bottom: var(--s-2);
+}
+.icon-category h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-20);
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+.icon-category span {
+  font-family: var(--font-numeric);
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.icon-sizes { display: flex; gap: var(--s-4); align-items: center; flex-wrap: wrap; }
+.icon-size {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  min-width: 96px;
+}
+.icon-size svg { color: var(--blue-500); stroke-width: 1.5; }
+.icon-size .lbl {
+  font-family: var(--font-numeric); font-size: 11px;
+  color: var(--ink-500); letter-spacing: 0.06em;
+}
+.icon-context {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--s-2);
+}
+.icon-ctx {
+  display: flex; gap: var(--s-2); align-items: center;
+  padding: var(--s-2) var(--s-3);
+  background: var(--ink-50);
+  border-radius: var(--r-md);
+  border: 1px solid var(--ink-200);
+}
+.icon-ctx svg { width: 22px; height: 22px; flex: 0 0 22px; color: var(--blue-500); stroke-width: 1.5; }
+.icon-ctx .desc { font-size: var(--fs-13, 13px); color: var(--ink-700); line-height: 1.4; }
+.icon-ctx .desc strong { color: var(--ink-900); display: block; font-weight: 500; font-size: var(--fs-14); }
+
+/* Override · usar quando o badge fica em cima de foto e precisa de contraste */
+.badge--on-image {
+  border-color: rgba(255,255,255,0.9) !important;
+  color: #fff !important;
+  background: rgba(15,21,29,0.35) !important;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* ============== INPUTS ============== */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font-size: var(--fs-12);
+  color: var(--ink-700);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.input, .select {
+  width: 100%; height: 56px;
+  padding: 0 var(--s-2);
+  border: 1px solid var(--ink-300);
+  border-radius: var(--r-md);
+  font-family: var(--font-text);
+  font-size: var(--fs-16);
+  background: var(--ink-0);
+  color: var(--ink-900);
+  transition: border .15s var(--ease), box-shadow .15s var(--ease);
+}
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px var(--blue-100);
+}
+.checkbox-row {
+  display: flex; align-items: center; gap: var(--s-1);
+  font-size: var(--fs-14); color: var(--ink-700);
+}
+
+/* ============== CARD DE PRODUTO ============== */
+.product-card {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+}
+.product-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+.product-card .thumb {
+  aspect-ratio: 4/3;
+  background-image: url("assets/produto-1.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ink-100);
+  position: relative;
+}
+.product-card .thumb .badges {
+  position: absolute; top: var(--s-2); left: var(--s-2);
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+}
+.product-card .body {
+  padding: var(--s-3);
+  display: flex; flex-direction: column; gap: var(--s-1);
+  flex: 1;
+}
+.product-card .line { font-size: 11px; color: var(--ink-500); letter-spacing: 0.14em; text-transform: uppercase; }
+.product-card .name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-20);
+  color: var(--ink-900);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  min-height: 48px;
+}
+.product-card .reviews {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--fs-12); color: var(--ink-500); margin-top: 4px;
+}
+.product-card .stars { color: var(--gold-500); letter-spacing: 2px; }
+.product-card .price { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+.product-card .price .from {
+  font-size: var(--fs-12); color: var(--price-from);
+  text-decoration: line-through;
+  min-height: 18px; display: block;
+}
+.product-card .price .from[aria-hidden="true"] { text-decoration: none; visibility: hidden; }
+.product-card .price .to {
+  font-family: var(--font-numeric);
+  font-size: var(--fs-24); font-weight: 500; color: var(--price-to);
+  letter-spacing: -0.01em;
+}
+.product-card .price .installment {
+  font-size: var(--fs-12); color: var(--installment);
+}
+.product-card .price .installment strong { color: var(--installment-tag); font-weight: 500; }
+.product-card .footer { margin-top: auto; padding-top: var(--s-2); }
+
+/* ============== FILTROS ============== */
+.filter-group { display: flex; flex-direction: column; gap: var(--s-1); }
+.filter-group h5 {
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--ink-700);
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--ink-300);
+  font-family: var(--font-text);
+  font-size: var(--fs-14);
+  color: var(--ink-700);
+  background: var(--ink-0);
+  cursor: pointer;
+  transition: background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), transform .15s var(--ease);
+  user-select: none;
+}
+.chip:hover { border-color: var(--blue-500); color: var(--blue-500); }
+.chip:active { transform: scale(0.97); }
+.chip--active { background: var(--blue-500); border-color: var(--blue-500); color: var(--ink-0); }
+.chip--active:hover { color: var(--ink-0); background: var(--blue-700); border-color: var(--blue-700); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ============== TABELA COMPARATIVA ============== */
+.compare-wrap {
+  padding-top: 14px;
+  border-radius: var(--r-md);
+  background: var(--ink-0);
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--ink-200);
+  overflow: hidden;
+}
+.compare {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  font-family: var(--font-text);
+  font-size: var(--fs-14);
+  background: var(--ink-0);
+}
+.compare th {
+  background: var(--blue-700);
+  color: var(--ink-0);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-18);
+  padding: var(--s-3);
+  text-align: left;
+  letter-spacing: -0.01em;
+  vertical-align: bottom;
+}
+.compare th.recommended {
+  background: var(--blue-900);
+  padding-top: var(--s-3);
+}
+.compare th .rec-tag {
+  display: inline-block;
+  background: var(--gold-500); color: var(--ink-900);
+  font-family: var(--font-text);
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  margin-bottom: 8px;
+}
+.compare td {
+  padding: var(--s-2) var(--s-3);
+  border-top: 1px solid var(--ink-200);
+  color: var(--ink-700);
+  vertical-align: middle;
+}
+.compare td:first-child {
+  font-weight: 500; color: var(--ink-900);
+  background: var(--ink-50);
+  border-right: 1px solid var(--ink-200);
+}
+.compare td.highlight {
+  background: rgba(184,144,88,0.08);
+  border-left: 1px solid var(--gold-500);
+  border-right: 1px solid var(--gold-500);
+  color: var(--ink-900);
+  font-weight: 500;
+}
+.compare tr:last-child td.highlight {
+  border-bottom: 1px solid var(--gold-500);
+}
+.compare .yes { color: var(--success-500); font-weight: 500; }
+.compare .no { color: var(--ink-400); }
+.compare .price-row td { font-family: var(--font-numeric); font-size: var(--fs-20); font-weight: 500; }
+
+/* ============== SELOS DE CONFIANÇA ============== */
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0;
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.trust {
+  display: flex; align-items: center; gap: var(--s-2);
+  padding: var(--s-3) var(--s-3);
+  border-right: 1px solid var(--ink-200);
+  border-bottom: 1px solid var(--ink-200);
+}
+.trust:last-child, .trust:nth-child(3n) { border-right: 0; }
+.trust .ico {
+  width: 48px; height: 48px; flex: 0 0 48px;
+  background: var(--blue-500);
+  color: var(--ink-0);
+  display: grid; place-items: center;
+  border-radius: 50%;
+}
+.trust .ico svg {
+  width: 22px; height: 22px;
+  stroke-width: 1.5;
+}
+.trust .text { display: block; min-width: 0; }
+.trust .label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-18);
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  line-height: 1;
+  margin: 0;
+}
+.trust .sub {
+  display: block;
+  font-size: var(--fs-12);
+  color: var(--ink-500);
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* ============== HERO LP ============== */
+.lp-hero {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--ink-0);
+  padding: var(--s-12) var(--s-8);
+  background: var(--blue-900);
+}
+.lp-hero::before {
+  content: ""; position: absolute; inset: -40px;
+  background-image: url("assets/hero-3.jpg");
+  background-size: cover; background-position: center;
+  filter: blur(20px) saturate(1.1);
+  opacity: 0.5;
+  z-index: 0;
+}
+.lp-hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(15,21,29,0.78) 0%, rgba(31,48,65,0.55) 50%, rgba(31,48,65,0.78) 100%);
+  z-index: 0;
+}
+.lp-hero > * { position: relative; z-index: 1; }
+.lp-hero .eyebrow {
+  display: inline-flex; align-items: center; gap: var(--s-1);
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold-300);
+  margin-bottom: var(--s-3);
+}
+.lp-hero .eyebrow::before { content: ""; display: inline-block; width: 32px; height: 1px; background: var(--gold-300); }
+.lp-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-72);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  max-width: 22ch;
+  margin-bottom: var(--s-3);
+}
+.lp-hero h1 em { color: var(--gold-300); }
+.lp-hero p {
+  color: rgba(255,255,255,0.78);
+  font-weight: 300;
+  max-width: 52ch;
+  font-size: var(--fs-18);
+  margin-bottom: var(--s-5);
+}
+.lp-hero .actions { display: flex; gap: var(--s-2); flex-wrap: wrap; align-items: center; }
+.lp-hero .seal-row {
+  margin-top: var(--s-7);
+  padding-top: var(--s-3);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex; gap: var(--s-5); flex-wrap: wrap;
+  font-family: var(--font-text);
+  font-size: var(--fs-12);
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.lp-hero .seal-row strong { color: var(--ink-0); font-weight: 500; }
+
+/* ============== PROVA SOCIAL · editorial ============== */
+.testimonial {
+  background: var(--ink-0);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: var(--s-4);
+  align-items: stretch;
+}
+.testimonial .body { display: flex; flex-direction: column; }
+.testimonial .stars {
+  color: var(--gold-500); letter-spacing: 4px; margin-bottom: var(--s-2);
+  font-size: var(--fs-14);
+}
+.testimonial blockquote {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--fs-24);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin-bottom: var(--s-3);
+  position: relative;
+  padding-left: var(--s-3);
+  border-left: 2px solid var(--gold-500);
+}
+.testimonial .author { display: flex; align-items: center; gap: var(--s-2); margin-top: auto; }
+.testimonial .avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-300), var(--blue-700));
+  flex: 0 0 56px;
+}
+.testimonial .name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-18);
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+}
+.testimonial .role {
+  font-size: var(--fs-12);
+  color: var(--ink-500);
+  letter-spacing: 0.06em;
+}
+.testimonial .product {
+  border-radius: var(--r-md);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--s-2);
+  position: relative;
+  min-height: 220px;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--ink-0);
+  background: var(--blue-700);
+}
+.testimonial .product::before {
+  content: ""; position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  z-index: 0;
+}
+.testimonial .product[data-img="produto"]::before { background-image: url("assets/produto-1.png"); }
+.testimonial .product[data-img="hero1"]::before { background-image: url("assets/hero-1.jpg"); }
+.testimonial .product[data-img="hero3"]::before { background-image: url("assets/hero-3.jpg"); }
+.testimonial .product::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,21,29,0) 30%, rgba(15,21,29,0.85) 100%);
+  z-index: 0;
+}
+.testimonial .product > * { position: relative; z-index: 1; }
+.testimonial .product .tag {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-300);
+}
+.testimonial .product .pname {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-20);
+  margin-bottom: 2px;
+}
+.testimonial .product .verified {
+  margin-top: 6px;
+  font-size: 10px;
+  color: var(--gold-300);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ============== FAQ ============== */
+.faq-item {
+  border-bottom: 1px solid var(--ink-200);
+  padding: var(--s-3) 0;
+}
+.faq-item summary {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-20);
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: var(--s-3);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-family: var(--font-display);
+  font-size: var(--fs-32); color: var(--gold-500);
+  line-height: 0.5;
+  flex: 0 0 auto;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item p {
+  margin-top: var(--s-2);
+  color: var(--ink-600);
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  max-width: 64ch;
+}
+
+/* ============== COUNTDOWN ============== */
+.countdown-wrap {
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(210,98,102,0.55), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(45,9,10,0.65), transparent 65%),
+    linear-gradient(135deg, var(--red-700) 0%, var(--red-500) 50%, var(--red-800) 100%);
+  border-radius: var(--r-md);
+  padding: var(--s-7) var(--s-6);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-6);
+  align-items: center;
+  color: var(--ink-0);
+  position: relative; overflow: hidden;
+}
+.countdown-wrap > * { position: relative; z-index: 1; }
+.countdown-text .eyebrow {
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold-300); margin-bottom: var(--s-1);
+}
+.countdown-text h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-40);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.countdown-text p {
+  color: rgba(255,255,255,0.7);
+  font-size: var(--fs-16);
+  font-weight: 300;
+}
+.countdown {
+  display: flex; gap: var(--s-1); align-items: center;
+}
+.countdown .unit {
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: var(--s-2);
+  min-width: 88px;
+  border-radius: var(--r-sm);
+}
+.countdown .num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-56);
+  line-height: 1;
+  color: var(--ink-0);
+  letter-spacing: -0.02em;
+}
+.countdown .lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-300);
+  margin-top: 6px;
+}
+.countdown .sep { font-size: var(--fs-40); color: rgba(255,255,255,0.3); padding: 0 4px; }
+
+/* ============== Diretrizes (Do / Don't) ============== */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+.do, .dont {
+  border-radius: var(--r-md);
+  padding: var(--s-3);
+  border: 1px solid;
+  font-size: var(--fs-14);
+  line-height: 1.6;
+}
+.do { background: rgba(46,125,91,0.05); border-color: rgba(46,125,91,0.3); color: var(--ink-800); }
+.do::before {
+  content: "✓ Faça"; display: block;
+  color: var(--success-500); font-weight: 500;
+  margin-bottom: 6px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.dont { background: rgba(172,38,41,0.04); border-color: rgba(172,38,41,0.3); color: var(--ink-800); }
+.dont::before {
+  content: "✗ Não Faça"; display: block;
+  color: var(--red-500); font-weight: 500;
+  margin-bottom: 6px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+
+/* ============== Hierarquia CTA ============== */
+.cta-hierarchy { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-2); }
+.cta-hierarchy .level {
+  border: 1px solid var(--ink-200);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  text-align: center;
+  background: var(--ink-0);
+  display: flex; flex-direction: column; align-items: center; gap: var(--s-2);
+}
+.cta-hierarchy .level h5 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--ink-500);
+}
+.cta-hierarchy .level p { font-size: var(--fs-12); color: var(--ink-500); }
+
+/* ============== Tokens table ============== */
+.tokens {
+  width: 100%; border-collapse: collapse;
+  font-family: var(--font-numeric);
+  font-size: var(--fs-14);
+}
+.tokens th, .tokens td {
+  text-align: left; padding: 12px var(--s-2);
+  border-bottom: 1px solid var(--ink-200);
+}
+.tokens th {
+  color: var(--ink-500); font-weight: 500;
+  text-transform: uppercase; font-size: 11px;
+  letter-spacing: 0.16em;
+}
+.tokens td.token { color: var(--blue-700); font-weight: 500; }
+.tokens td.value { color: var(--ink-700); }
+
+/* ============== Pendências ============== */
+.pending {
+  border: 1px dashed var(--ink-300);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  background: var(--ink-50);
+  font-size: var(--fs-14);
+  color: var(--ink-600);
+}
+.pending strong {
+  font-family: var(--font-display); font-style: italic;
+  font-weight: 400; color: var(--ink-900);
+  font-size: var(--fs-18); display: block; margin-bottom: 4px;
+}
+
+/* ============== Responsivo ============== */
+/* ===== Backdrop (mobile drawer) ===== */
+.menu-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(15,14,12,0.55);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* ===== Tablet / desktop pequeno ===== */
+@media (max-width: 1024px) {
+  .main { padding: var(--s-7) var(--s-4); padding-top: 72px; }
+  .cover { padding: var(--s-9) var(--s-5) var(--s-7); }
+  .cover h1 { font-size: var(--fs-72); }
+  .cover .lead { font-size: var(--fs-18); }
+  .lp-hero { padding: var(--s-9) var(--s-5); }
+  .lp-hero h1 { font-size: var(--fs-56); }
+  .section > header h2 { font-size: var(--fs-40); }
+  .section { scroll-margin-top: 72px; }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  /* CRÍTICO: doc deixa de ser grid em mobile · main pega 100% real da viewport */
+  .doc {
+    display: block !important;
+    grid-template-columns: none !important;
+    min-width: 0;
+  }
+  .main {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0;
+  }
+
+  /* Sidebar vira drawer overlay */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: 280px; max-width: 86vw;
+    height: 100vh; height: 100dvh;
+    z-index: 45;
+    transform: translateX(-100%);
+    transition: transform .3s var(--ease);
+    padding-top: 72px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body:not(.menu-collapsed) .sidebar {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body.menu-collapsed .sidebar {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  body:not(.menu-collapsed) .menu-backdrop {
+    opacity: 1; pointer-events: auto;
+  }
+  body:not(.menu-collapsed) { overflow: hidden; }
+
+  /* Main: largura travada, padding lateral mínimo */
+  .main {
+    padding: 72px 16px var(--s-5);
+    max-width: 100vw;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+  .section {
+    margin-bottom: var(--s-7);
+    scroll-margin-top: 72px;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .section > header { max-width: 100%; }
+  .section > header h2 { font-size: 28px; line-height: 1.1; word-break: break-word; }
+  .section > header p { font-size: var(--fs-16); }
+  .section > header .eyebrow { font-size: 10px; }
+  .sub h3 { font-size: 22px; line-height: 1.15; }
+  .sub p { font-size: 13px; }
+
+  /* Cover */
+  .cover {
+    padding: 56px 20px 40px;
+    margin-bottom: var(--s-7);
+    border-radius: var(--r-sm);
+  }
+  .cover h1 { font-size: 36px; line-height: 1; max-width: 100%; word-break: break-word; }
+  .cover .lead { font-size: 15px; margin-bottom: var(--s-4); max-width: 100%; }
+  .cover .eyebrow { font-size: 10px; }
+  .cover .footer-row {
+    gap: 8px 16px; font-size: 9px;
+    padding-top: var(--s-2);
+    flex-direction: column; align-items: flex-start;
+  }
+  .cover .footer-row span { display: block; }
+
+  /* Princípios */
+  .preview-grid { grid-template-columns: 1fr; gap: var(--s-2); }
+  .principle { padding: var(--s-3); }
+  .principle h4 { font-size: var(--fs-18); }
+  .principle .num { font-size: 28px; }
+
+  /* Painéis */
+  .panel { padding: var(--s-3); }
+
+  /* Color rail */
+  .color-rail { padding: var(--s-3); }
+  .color-rail__head { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: var(--s-2); }
+  .color-rail__title { font-size: var(--fs-20); }
+  .color-rail__bar { grid-template-columns: repeat(5, 1fr); height: auto; }
+  .color-rail__bar > div { height: 56px; font-size: 9px; padding: 4px; }
+
+  /* Tipografia */
+  .type-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: var(--s-2) 0;
+  }
+  .type-row .specs { text-align: left; }
+  .type-row > span:nth-child(2) {
+    font-size: clamp(20px, 7vw, 40px) !important;
+    line-height: 1.05 !important;
+    word-break: break-word;
+  }
+
+  /* Espaçamento */
+  .space-row {
+    grid-template-columns: 56px 1fr 64px;
+    gap: 8px; font-size: 10px;
+    overflow: hidden;
+  }
+  .space-demo { overflow: hidden; }
+  .space-demo .b { width: 16px; height: 16px; flex: 0 0 16px; }
+  .space-demo .gap { height: 16px; }
+
+  /* Vitrine raios/sombras */
+  .vitrine { padding: var(--s-2); gap: var(--s-2); grid-template-columns: repeat(2, 1fr); }
+  .vitrine-card { padding: var(--s-2); }
+  .vitrine-card .demo { height: 64px; }
+  .vitrine-card .name { font-size: var(--fs-14); }
+
+  /* Grid */
+  .grid-rule { padding: var(--s-2); }
+  .grid-rule__bar { gap: 4px; }
+  .grid-rule__col { height: 140px; }
+  .grid-rule__col::before { display: none; }
+  .grid-rule__legend { font-size: 9px; }
+
+  /* Botões */
+  .btn { padding: 12px 18px; font-size: 14px; }
+  .btn--lg { padding: 14px 20px; font-size: 15px; }
+
+  /* Selos premium */
+  .badge { font-size: 9px; padding: 5px 8px; letter-spacing: 0.12em; }
+  .badge--sealed { font-size: 12px; padding: 3px 10px 4px; }
+
+  /* Ícones */
+  .icon-sizes { gap: var(--s-2); justify-content: center; }
+  .icon-size { min-width: 64px; }
+  .icon-grid { grid-template-columns: repeat(3, 1fr); }
+  .icon-cell { padding: var(--s-2) 6px; gap: 6px; }
+  .icon-cell svg { width: 22px; height: 22px; }
+  .icon-cell .name { font-size: 9px; }
+  .icon-context { grid-template-columns: 1fr; }
+  .icon-category { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .icon-category h4 { font-size: var(--fs-18); }
+
+  /* Formulários */
+  .input, .select { height: 48px; font-size: 16px; }
+
+  /* Card de produto */
+  .product-card .name { font-size: var(--fs-18); min-height: auto; }
+
+  /* Filtros */
+  .chip { font-size: 13px; padding: 6px 10px; }
+  .chip-row { gap: 6px; }
+
+  /* Tabela comparativa: scroll horizontal */
+  .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .compare { min-width: 540px; font-size: 13px; }
+  .compare th, .compare td { padding: var(--s-2); }
+  .compare th { font-size: 15px; }
+  .compare th .rec-tag { font-size: 9px; padding: 3px 8px; }
+
+  /* Selos de confiança */
+  .trust-row { grid-template-columns: 1fr; }
+  .trust { border-right: 0; padding: 12px 14px; gap: 12px; }
+  .trust .ico { width: 40px; height: 40px; flex: 0 0 40px; }
+  .trust .ico svg { width: 18px; height: 18px; }
+  .trust .label { font-size: var(--fs-16); white-space: normal; }
+
+  /* Hero LP */
+  .lp-hero {
+    padding: 48px 20px;
+    border-radius: var(--r-sm);
+  }
+  .lp-hero h1 { font-size: 32px; line-height: 1; max-width: 100%; word-break: break-word; }
+  .lp-hero p { font-size: 15px; margin-bottom: var(--s-3); }
+  .lp-hero .eyebrow { font-size: 10px; }
+  .lp-hero .actions {
+    gap: 8px;
+    flex-direction: column; align-items: stretch;
+  }
+  .lp-hero .actions .btn { width: 100%; padding: 14px 16px; font-size: var(--fs-14); }
+  .lp-hero .seal-row {
+    gap: 6px 12px; font-size: 9px;
+    padding-top: var(--s-2);
+    margin-top: var(--s-4);
+    flex-direction: column; align-items: flex-start;
+  }
+  .lp-hero .seal-row span { display: block; }
+
+  /* Prova social */
+  .testimonial {
+    grid-template-columns: 1fr;
+    padding: var(--s-3); gap: var(--s-3);
+  }
+  .testimonial .product {
+    min-height: 160px; order: -1;
+    padding: var(--s-2);
+  }
+  .testimonial blockquote { font-size: 17px; line-height: 1.35; padding-left: 12px; }
+  .testimonial .author { gap: 10px; }
+  .testimonial .avatar { width: 44px; height: 44px; flex: 0 0 44px; }
+
+  /* FAQ */
+  .faq-item summary { font-size: 16px; gap: 12px; }
+  .faq-item summary::after { font-size: 24px; }
+  .faq-item p { font-size: 14px; }
+
+  /* Countdown */
+  .countdown-wrap {
+    grid-template-columns: 1fr;
+    padding: var(--s-4) var(--s-3);
+    gap: var(--s-3); text-align: center;
+  }
+  .countdown { justify-content: center; gap: 4px; flex-wrap: nowrap; }
+  .countdown .num { font-size: 28px; }
+  .countdown .unit { min-width: 0; padding: 8px 4px; flex: 1; max-width: 80px; }
+  .countdown .lbl { font-size: 9px; }
+  .countdown .sep { font-size: 22px; padding: 0; }
+  .countdown-text h3 { font-size: 26px; }
+  .countdown-text p { font-size: 14px; }
+  .countdown-text .eyebrow { font-size: 10px; }
+
+  /* CTA hierarchy + Do/Don't */
+  .cta-hierarchy { grid-template-columns: 1fr; }
+  .cta-hierarchy .level { padding: var(--s-3); }
+  .do-dont { grid-template-columns: 1fr; gap: var(--s-1); }
+  .do, .dont { padding: var(--s-2) var(--s-3); font-size: 13px; }
+
+  /* Fotografia */
+  .panel + .panel { margin-top: 0; }
+
+  /* Fotografia grid de referências */
+  .section#photo > div[style*="grid-template-columns:repeat(2,1fr)"],
+  .section#photo > div { grid-template-columns: 1fr !important; }
+}
+
+/* ===== Mobile · estrutura centralizada (≤768px) ===== */
+@media (max-width: 768px) {
+  /* HEROS centralizados (estrutura + texto principal) */
+  .cover { text-align: center; padding: 48px 16px 32px; }
+  .cover .eyebrow { margin-left: auto; margin-right: auto; justify-content: center; }
+  .cover .eyebrow::after { display: none; }
+  .cover h1 { margin-left: auto; margin-right: auto; }
+  .cover .lead { margin-left: auto; margin-right: auto; }
+  .cover .footer-row {
+    flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+  }
+
+  .lp-hero { text-align: center; padding: 40px 16px; }
+  .lp-hero .eyebrow { justify-content: center; margin-left: auto; margin-right: auto; }
+  .lp-hero .eyebrow::before { display: none; }
+  .lp-hero h1 { margin-left: auto; margin-right: auto; }
+  .lp-hero p { margin-left: auto; margin-right: auto; }
+  .lp-hero .actions { justify-content: center; }
+  .lp-hero .seal-row {
+    flex-direction: column; align-items: center; justify-content: center;
+  }
+
+  .countdown-wrap { text-align: center; }
+  .countdown-text { text-align: center; }
+
+  /* Section headers · estrutura centralizada, texto à esquerda */
+  .section > header {
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* Panels e blocos centralizados na viewport */
+  .panel, .vitrine, .grid-rule, .trust-row, .compare-wrap,
+  .color-rail, .testimonial, .countdown-wrap, .icon-grid {
+    margin-left: auto; margin-right: auto;
+  }
+}
+
+/* ===== Smartphone (≤480px) ===== */
+@media (max-width: 480px) {
+  .main { padding: 64px 12px var(--s-4); }
+
+  .cover { padding: 40px 14px 28px; }
+  .cover h1 { font-size: 28px; line-height: 1; }
+  .cover .lead { font-size: 14px; }
+  .cover .eyebrow { font-size: 9px; }
+  .cover .footer-row { font-size: 8px; gap: 4px; }
+
+  .section > header h2 { font-size: 24px; line-height: 1.1; }
+  .section > header p { font-size: 14px; }
+  .sub h3 { font-size: 20px; }
+  .sub p { font-size: 12px; }
+
+  .principle h4 { font-size: 16px; }
+  .principle p { font-size: 13px; }
+  .principle .num { font-size: 24px; }
+
+  .color-rail { padding: var(--s-2); }
+  .color-rail__title { font-size: 18px; }
+  .color-rail__bar { grid-template-columns: repeat(5, 1fr); }
+  .color-rail__bar > div { height: 48px; font-size: 8px; padding: 3px; }
+  .color-rail__bar > div .step { font-size: 9px; }
+  .color-rail__bar > div .hex { display: none; }
+
+  .type-row > span:nth-child(2) {
+    font-size: clamp(16px, 6vw, 32px) !important;
+  }
+
+  .space-row { grid-template-columns: 48px 1fr 56px; gap: 6px; font-size: 9px; }
+  .space-demo .b { width: 12px; height: 12px; flex: 0 0 12px; }
+  .space-demo .gap { height: 12px; }
+
+  .vitrine { grid-template-columns: 1fr 1fr; padding: 12px; gap: 10px; }
+  .vitrine-card .demo { height: 56px; }
+  .vitrine-card .name { font-size: 13px; }
+  .vitrine-card .label { font-size: 10px; }
+  .vitrine-card span:last-child { font-size: 10px !important; }
+
+  .grid-rule { padding: 12px; }
+  .grid-rule__col { height: 100px; }
+  .grid-rule__bar { gap: 2px; }
+  .grid-rule__legend { font-size: 8px; }
+
+  .lp-hero { padding: 36px 14px; }
+  .lp-hero h1 { font-size: 26px; line-height: 1; }
+  .lp-hero p { font-size: 14px; }
+  .lp-hero .seal-row { font-size: 8px; }
+
+  .testimonial { padding: var(--s-2); gap: 12px; }
+  .testimonial blockquote { font-size: 15px; line-height: 1.4; padding-left: 10px; }
+  .testimonial .product { min-height: 140px; }
+  .testimonial .product .pname { font-size: 16px; }
+  .testimonial .name { font-size: 15px; }
+  .testimonial .role { font-size: 11px; line-height: 1.3; }
+
+  .countdown-wrap { padding: var(--s-3) var(--s-2); }
+  .countdown { gap: 2px; }
+  .countdown .num { font-size: 22px; }
+  .countdown .lbl { font-size: 8px; letter-spacing: 0.12em; }
+  .countdown .unit { padding: 6px 2px; max-width: 64px; }
+  .countdown .sep { font-size: 18px; }
+  .countdown-text h3 { font-size: 22px; }
+  .countdown-text p { font-size: 13px; }
+
+  .faq-item summary { font-size: 15px; }
+  .faq-item p { font-size: 13px; }
+
+  .icon-sizes { gap: 8px; }
+  .icon-size { min-width: 52px; }
+  .icon-size .lbl { font-size: 9px; }
+  .icon-grid { grid-template-columns: repeat(2, 1fr); }
+  .icon-cell svg { width: 22px; height: 22px; }
+  .icon-cell .name { font-size: 9px; }
+  .icon-category h4 { font-size: 16px; }
+  .icon-category span { font-size: 9px; }
+
+  .trust { padding: 10px 12px; }
+  .trust .ico { width: 36px; height: 36px; flex: 0 0 36px; }
+  .trust .ico svg { width: 16px; height: 16px; }
+  .trust .label { font-size: 14px; }
+  .trust .sub { font-size: 11px; }
+
+  .compare { min-width: 460px; font-size: 12px; }
+  .compare th { font-size: 14px; padding: 10px; }
+  .compare td { padding: 8px 10px; }
+
+  .product-card .body { padding: var(--s-2); }
+  .product-card .name { font-size: 16px; }
+  .product-card .price .to { font-size: 20px; }
+
+  .menu-toggle { width: 40px; height: 40px; top: 12px; left: 12px; }
+
+  .badge { font-size: 8px; padding: 4px 6px; }
+  .btn { padding: 11px 16px; font-size: 13px; }
+  .btn--lg { padding: 13px 18px; font-size: 14px; }
+
+  .do, .dont { padding: var(--s-2); font-size: 12px; line-height: 1.45; }
+  .pending { padding: var(--s-3); font-size: 13px; }
+}
+
+/* ===== Smartphone ultra-pequeno (≤360px) ===== */
+@media (max-width: 360px) {
+  .main { padding: 60px 10px var(--s-3); }
+  .cover h1 { font-size: 24px; }
+  .lp-hero h1 { font-size: 22px; }
+  .section > header h2 { font-size: 22px; }
+  .countdown .num { font-size: 18px; }
+  .countdown .unit { padding: 5px 2px; max-width: 54px; }
+  .countdown .sep { font-size: 14px; }
+  .countdown-text h3 { font-size: 20px; }
+  .icon-grid { grid-template-columns: 1fr 1fr; }
+  .vitrine { grid-template-columns: 1fr; }
+  .color-rail__bar { grid-template-columns: repeat(4, 1fr); }
+  .color-rail__bar > div { height: 40px; }
+  .product-card .name { font-size: 15px; }
+  .trust .label { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir/fechar menu" aria-expanded="true" type="button">
+  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+  <svg class="ico-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+</button>
+<div class="doc" id="doc">
+
+  <!-- ============= SIDEBAR ============= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/logo-euro-white.png" alt="Euro Colchões" />
+    </div>
+    <div class="meta" style="padding:0 8px">UI Kit · v0.2 · 2026</div>
+    <nav>
+      <ul>
+        <li>
+          <h4>Introdução</h4>
+          <ul>
+            <li><a href="#cover">Visão</a></li>
+            <li><a href="#principles">Princípios</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Foundation</h4>
+          <ul>
+            <li><a href="#colors">Cores</a></li>
+            <li><a href="#tokens-ecom">Tokens de e-commerce</a></li>
+            <li><a href="#typography">Tipografia</a></li>
+            <li><a href="#spacing">Espaçamento</a></li>
+            <li><a href="#radii">Raios &amp; sombras</a></li>
+            <li><a href="#grid">Grid</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Componentes</h4>
+          <ul>
+            <li><a href="#buttons">Botões</a></li>
+            <li><a href="#badges">Selos premium</a></li>
+            <li><a href="#icons">Ícones</a></li>
+            <li><a href="#forms">Formulários</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4>E-commerce</h4>
+          <ul>
+            <li><a href="#product-card">Card de produto</a></li>
+            <li><a href="#filters">Filtros</a></li>
+            <li><a href="#compare">Comparativa</a></li>
+            <li><a href="#trust">Selos de confiança</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Landing Page</h4>
+          <ul>
+            <li><a href="#hero">Hero</a></li>
+            <li><a href="#social-proof">Prova social</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#countdown">Countdown</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4>Diretrizes</h4>
+          <ul>
+            <li><a href="#cta-hier">Hierarquia de CTA</a></li>
+            <li><a href="#photo">Fotografia</a></li>
+            <li><a href="#performance">Performance</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============= MAIN ============= -->
+  <main class="main">
+
+    <!-- ===== COVER ===== -->
+    <section class="cover" id="cover">
+      <span class="eyebrow">UI Kit · Sistema visual e de componentes</span>
+      <h1>Celebre o <em>sono</em><br/>que você merece.</h1>
+      <p class="lead">Sistema visual da Euro Colchões. Alinha e-commerce, landing pages e criativos sob uma mesma promessa: descanso de alta qualidade, com cuidado em cada detalhe.</p>
+      <div class="footer-row">
+        <span><strong>Marca</strong> Euro Colchões</span>
+        <span><strong>Disciplinas</strong> Web · LP · Social</span>
+        <span><strong>Base</strong> 8px</span>
+        <span><strong>Tipo</strong> DM Serif Display + Roboto</span>
+      </div>
+    </section>
+
+    <!-- ===== PRINCIPLES ===== -->
+    <section class="section" id="principles">
+      <header>
+        <span class="eyebrow">Princípios</span>
+        <h2>Como esse sistema <em>pensa</em></h2>
+        <p>Seis regras que dirigem cada decisão visual, para que tudo, do banner ao botão, comunique a mesma promessa de qualidade.</p>
+      </header>
+      <div class="preview-grid">
+        <div class="principle">
+          <div class="num">01</div>
+          <h4>Qualidade antes de oferta</h4>
+          <p>Materiais, garantia e cuidado vêm primeiro. Preço aparece com elegância, nunca com escassez forçada.</p>
+        </div>
+        <div class="principle">
+          <div class="num">02</div>
+          <h4>Tipografia como assinatura</h4>
+          <p>DM Serif Display em itálico é a voz da marca. Aparece em headlines, nomes de produto e citações.</p>
+        </div>
+        <div class="principle">
+          <div class="num">03</div>
+          <h4>Vermelho é raro</h4>
+          <p>Cor da ação principal, usada com parcimônia para que mantenha sua força. Azul é a estrutura.</p>
+        </div>
+        <div class="principle">
+          <div class="num">04</div>
+          <h4>Champagne &amp; respiro</h4>
+          <p>O dourado claro é o acento de luxo. Aparece em detalhes (selos, separadores, citações) e nunca em massa.</p>
+        </div>
+        <div class="principle">
+          <div class="num">05</div>
+          <h4>Fotografia faz a venda</h4>
+          <p>Quarto real, luz natural, drapeado. Produto sempre em contexto. Nunca fundo branco isolado em peças de marca.</p>
+        </div>
+        <div class="principle">
+          <div class="num">06</div>
+          <h4>Token é lei</h4>
+          <p>Toda cor, espaço, fonte e raio vem de uma variável. Trocar uma vez é trocar em todo o sistema.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CORES ===== -->
+    <section class="section" id="colors">
+      <header>
+        <span class="eyebrow">Foundation · 01</span>
+        <h2>Sistema de <em>cores</em></h2>
+        <p>Vermelho e azul oficiais como pilares. Champagne como acento premium. Neutros quentes para texto e fundo, sustentando a sensação de aconchego.</p>
+      </header>
+
+      <div class="color-rail">
+        <div class="color-rail__head">
+          <div class="color-rail__title">Vermelho · <em>marca</em></div>
+          <div class="color-rail__hex">#AC2629 · primária 500</div>
+        </div>
+        <div class="color-rail__bar">
+          <div style="background:var(--red-50);color:var(--ink-800)"><span class="step">50</span><span class="hex">#FBEAEA</span></div>
+          <div style="background:var(--red-100);color:var(--ink-800)"><span class="step">100</span><span class="hex">#F4C8C9</span></div>
+          <div style="background:var(--red-200);color:var(--ink-800)"><span class="step">200</span><span class="hex">#E69598</span></div>
+          <div style="background:var(--red-300);color:#fff"><span class="step">300</span><span class="hex">#D26266</span></div>
+          <div style="background:var(--red-400);color:#fff"><span class="step">400</span><span class="hex">#BD3D42</span></div>
+          <div style="background:var(--red-500);color:#fff"><span class="step">500 ★</span><span class="hex">#AC2629</span></div>
+          <div style="background:var(--red-600);color:#fff"><span class="step">600</span><span class="hex">#8E1F22</span></div>
+          <div style="background:var(--red-700);color:#fff"><span class="step">700</span><span class="hex">#6F181A</span></div>
+          <div style="background:var(--red-800);color:#fff"><span class="step">800</span><span class="hex">#501113</span></div>
+          <div style="background:var(--red-900);color:#fff"><span class="step">900</span><span class="hex">#2D090A</span></div>
+        </div>
+      </div>
+
+      <div class="color-rail">
+        <div class="color-rail__head">
+          <div class="color-rail__title">Azul · <em>estrutura</em></div>
+          <div class="color-rail__hex">#344D66 · primária 500</div>
+        </div>
+        <div class="color-rail__bar">
+          <div style="background:var(--blue-50);color:var(--ink-800)"><span class="step">50</span><span class="hex">#E8ECF1</span></div>
+          <div style="background:var(--blue-100);color:var(--ink-800)"><span class="step">100</span><span class="hex">#C7D0DB</span></div>
+          <div style="background:var(--blue-200);color:var(--ink-800)"><span class="step">200</span><span class="hex">#9FAEC0</span></div>
+          <div style="background:var(--blue-300);color:#fff"><span class="step">300</span><span class="hex">#768BA4</span></div>
+          <div style="background:var(--blue-400);color:#fff"><span class="step">400</span><span class="hex">#556F8A</span></div>
+          <div style="background:var(--blue-500);color:#fff"><span class="step">500 ★</span><span class="hex">#344D66</span></div>
+          <div style="background:var(--blue-600);color:#fff"><span class="step">600</span><span class="hex">#2A3F54</span></div>
+          <div style="background:var(--blue-700);color:#fff"><span class="step">700</span><span class="hex">#1F3041</span></div>
+          <div style="background:var(--blue-800);color:#fff"><span class="step">800</span><span class="hex">#15212E</span></div>
+          <div style="background:var(--blue-900);color:#fff"><span class="step">900</span><span class="hex">#0A1219</span></div>
+        </div>
+      </div>
+
+      <div class="color-rail">
+        <div class="color-rail__head">
+          <div class="color-rail__title">Champagne · <em>acento premium</em></div>
+          <div class="color-rail__hex">extraído da hero do site · usar com parcimônia</div>
+        </div>
+        <div class="color-rail__bar" style="grid-template-columns: repeat(5, 1fr)">
+          <div style="background:var(--gold-50);color:var(--ink-800)"><span class="step">50</span><span class="hex">#FAF4EB</span></div>
+          <div style="background:var(--gold-100);color:var(--ink-800)"><span class="step">100</span><span class="hex">#F0E1C8</span></div>
+          <div style="background:var(--gold-300);color:var(--ink-800)"><span class="step">300</span><span class="hex">#D9B985</span></div>
+          <div style="background:var(--gold-500);color:#fff"><span class="step">500</span><span class="hex">#B89058</span></div>
+          <div style="background:var(--gold-700);color:#fff"><span class="step">700</span><span class="hex">#7E5E33</span></div>
+        </div>
+      </div>
+
+      <div class="color-rail">
+        <div class="color-rail__head">
+          <div class="color-rail__title">Neutros · <em>conteúdo</em></div>
+          <div class="color-rail__hex">tons quentes · sustentam o aconchego</div>
+        </div>
+        <div class="color-rail__bar">
+          <div style="background:var(--ink-0);color:var(--ink-800);border-right:1px solid var(--ink-200)"><span class="step">0</span><span class="hex">#FFFFFF</span></div>
+          <div style="background:var(--ink-50);color:var(--ink-800)"><span class="step">50</span><span class="hex">#FAFAF8</span></div>
+          <div style="background:var(--ink-100);color:var(--ink-800)"><span class="step">100</span><span class="hex">#F2F0EC</span></div>
+          <div style="background:var(--ink-200);color:var(--ink-800)"><span class="step">200</span><span class="hex">#E4E1DC</span></div>
+          <div style="background:var(--ink-300);color:var(--ink-800)"><span class="step">300</span><span class="hex">#C9C5BD</span></div>
+          <div style="background:var(--ink-400);color:#fff"><span class="step">400</span><span class="hex">#9E9A91</span></div>
+          <div style="background:var(--ink-500);color:#fff"><span class="step">500</span><span class="hex">#6B675F</span></div>
+          <div style="background:var(--ink-700);color:#fff"><span class="step">700</span><span class="hex">#2F2D29</span></div>
+          <div style="background:var(--ink-800);color:#fff"><span class="step">800</span><span class="hex">#1C1B18</span></div>
+          <div style="background:var(--ink-900);color:#fff"><span class="step">900</span><span class="hex">#0F0E0C</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOKENS DE E-COMMERCE ===== -->
+    <section class="section" id="tokens-ecom">
+      <header>
+        <span class="eyebrow">Foundation · 02</span>
+        <h2>Tokens de <em>e-commerce</em></h2>
+        <p>Não são novas cores: são <strong>apelidos semânticos</strong>. Cada token aponta para uma cor da paleta, mas existe para nomear um conceito ("preço de", "selo de qualidade"). Se um dia decidirmos que desconto deixa de ser vermelho, basta trocar o apelido em um lugar. A paleta segue intacta.</p>
+      </header>
+
+      <div class="panel">
+        <table class="tokens">
+          <thead><tr><th>Token</th><th>Aponta para</th><th>Onde aparece</th></tr></thead>
+          <tbody>
+            <tr><td class="token">--price-from</td><td class="value">ink-500</td><td class="value">"De: R$ 1.999" (riscado)</td></tr>
+            <tr><td class="token">--price-to</td><td class="value">ink-900</td><td class="value">"Por: R$ 1.499" (preço final)</td></tr>
+            <tr><td class="token">--price-discount</td><td class="value">red-500</td><td class="value">"-25%" e "Por:" em fundo branco</td></tr>
+            <tr><td class="token">--installment</td><td class="value">ink-700</td><td class="value">"10x R$ 149,90"</td></tr>
+            <tr><td class="token">--installment-tag</td><td class="value">success-500</td><td class="value">Destaque "sem juros"</td></tr>
+            <tr><td class="token">--tag-edition</td><td class="value">gold-700</td><td class="value">Selo "Edição Limitada"</td></tr>
+            <tr><td class="token">--tag-quality</td><td class="value">blue-500</td><td class="value">Selo "Selo de qualidade Euro"</td></tr>
+            <tr><td class="token">--tag-bestseller</td><td class="value">red-500</td><td class="value">Selo "O mais escolhido"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== TIPOGRAFIA ===== -->
+    <section class="section" id="typography">
+      <header>
+        <span class="eyebrow">Foundation · 03</span>
+        <h2><em>Tipografia</em></h2>
+        <p>Duas fontes, dois papéis. <strong>DM Serif Display</strong> carrega o tom: é a voz emocional, o italico convida ao desejo. <strong>Roboto</strong> carrega a informação: densa, técnica, clara em qualquer tamanho.</p>
+      </header>
+
+      <div class="panel">
+        <div class="type-row">
+          <span class="label">display 96 · italic</span>
+          <span class="serif" style="font-size:var(--fs-96);font-style:italic;line-height:1;letter-spacing:-0.035em">Celebre.</span>
+          <span class="specs">DM Serif Display · 96 / 94 / -3.5%</span>
+        </div>
+        <div class="type-row">
+          <span class="label">display 72</span>
+          <span class="serif" style="font-size:var(--fs-72);line-height:1;letter-spacing:-0.03em">Anos de qualidade</span>
+          <span class="specs">DM Serif Display · 72 / 72 / -3%</span>
+        </div>
+        <div class="type-row">
+          <span class="label">display 56</span>
+          <span class="serif" style="font-size:var(--fs-56);line-height:1.05;letter-spacing:-0.02em">Coleção 2026</span>
+          <span class="specs">DM Serif Display · 56 / 60 / -2%</span>
+        </div>
+        <div class="type-row">
+          <span class="label">heading 32</span>
+          <span class="serif" style="font-size:var(--fs-32);letter-spacing:-0.02em">Colchão Super Luxo Intermediário</span>
+          <span class="specs">DM Serif Display · 32 / 36 / -2%</span>
+        </div>
+        <div class="type-row">
+          <span class="label">heading 24 · italic</span>
+          <span class="serif" style="font-size:var(--fs-24);font-style:italic">Avaliações dos clientes</span>
+          <span class="specs">DM Serif Display Italic · 24 / 32</span>
+        </div>
+        <div class="type-row">
+          <span class="label">body 18</span>
+          <span style="font-size:var(--fs-18);font-weight:300;line-height:1.55;color:var(--ink-700)">Combinação de design elegante e tecnologia de ponta para um descanso reparador noite após noite.</span>
+          <span class="specs">Roboto Light · 18 / 28</span>
+        </div>
+        <div class="type-row">
+          <span class="label">body 16</span>
+          <span style="font-size:var(--fs-16);line-height:1.55;color:var(--ink-700)">Espuma de alta densidade, suporte ergonômico e tecido antialérgico tratado.</span>
+          <span class="specs">Roboto Regular · 16 / 25</span>
+        </div>
+        <div class="type-row">
+          <span class="label">body 14</span>
+          <span style="font-size:var(--fs-14);color:var(--ink-600)">Frete grátis para todo o Brasil em compras acima de R$ 999.</span>
+          <span class="specs">Roboto Regular · 14 / 21</span>
+        </div>
+        <div class="type-row">
+          <span class="label">caption 12</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500);text-transform:uppercase;letter-spacing:0.18em;font-weight:500">Edição limitada</span>
+          <span class="specs">Roboto Medium · 12 · uppercase</span>
+        </div>
+        <div class="type-row">
+          <span class="label">numérico 24</span>
+          <span style="font-family:var(--font-numeric);font-size:var(--fs-24);font-weight:500;font-feature-settings:'tnum'">R$ 1.499,00</span>
+          <span class="specs">Roboto Medium · tabular-nums</span>
+        </div>
+      </div>
+
+      <div class="sub"><h3>Pares canônicos</h3></div>
+      <div class="preview-grid">
+        <div class="panel" style="background:var(--ink-900);color:#fff">
+          <div style="font-size:11px;letter-spacing:0.18em;color:var(--gold-300);text-transform:uppercase;margin-bottom:8px">Hero / capa</div>
+          <div class="serif" style="font-size:var(--fs-56);line-height:1;letter-spacing:-0.03em;font-style:italic">Celebre.</div>
+          <div style="font-size:var(--fs-18);font-weight:300;color:rgba(255,255,255,.7);margin-top:8px">Anos de qualidade</div>
+        </div>
+        <div class="panel">
+          <div style="font-size:11px;letter-spacing:0.18em;color:var(--gold-700);text-transform:uppercase;margin-bottom:8px">PDP / produto</div>
+          <div class="serif" style="font-size:var(--fs-32);letter-spacing:-0.02em">Colchão <em>Premium</em> Intermediário</div>
+          <div style="font-size:var(--fs-14);color:var(--ink-600);margin-top:6px">Casal · 138×188 · Densidade D45</div>
+        </div>
+        <div class="panel">
+          <div style="font-size:11px;letter-spacing:0.18em;color:var(--gold-700);text-transform:uppercase;margin-bottom:8px">Citação / depoimento</div>
+          <div class="serif" style="font-size:var(--fs-24);font-style:italic;line-height:1.3;color:var(--ink-800)">"O sono mudou. A casa também."</div>
+          <div style="font-size:var(--fs-12);color:var(--ink-500);margin-top:8px;letter-spacing:0.06em">Beatriz M., São Paulo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ESPAÇAMENTO ===== -->
+    <section class="section" id="spacing">
+      <header>
+        <span class="eyebrow">Foundation · 04</span>
+        <h2><em>Espaçamento</em> · base 8px</h2>
+        <p>Toda margem, padding e gap usa múltiplos de 8. Sem meio-step. Isso garante alinhamento perfeito entre componentes em qualquer tela e cria respiração consistente em todo o sistema.</p>
+      </header>
+
+      <div class="panel">
+        <div style="font-size:11px;color:var(--ink-500);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--s-3);font-family:var(--font-numeric)">Dois blocos com a distância exata do token entre eles · a faixa pontilhada mostra o tamanho real do espaçamento</div>
+        <div class="space-row"><span class="label">--s-1</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:8px"></div><div class="b"></div></div><span class="px">8px</span></div>
+        <div class="space-row"><span class="label">--s-2</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:16px"></div><div class="b"></div></div><span class="px">16px</span></div>
+        <div class="space-row"><span class="label">--s-3</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:24px"></div><div class="b"></div></div><span class="px">24px</span></div>
+        <div class="space-row"><span class="label">--s-4</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:32px"></div><div class="b"></div></div><span class="px">32px</span></div>
+        <div class="space-row"><span class="label">--s-5</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:40px"></div><div class="b"></div></div><span class="px">40px</span></div>
+        <div class="space-row"><span class="label">--s-6</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:48px"></div><div class="b"></div></div><span class="px">48px</span></div>
+        <div class="space-row"><span class="label">--s-7</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:56px"></div><div class="b"></div></div><span class="px">56px</span></div>
+        <div class="space-row"><span class="label">--s-8</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:64px"></div><div class="b"></div></div><span class="px">64px</span></div>
+        <div class="space-row"><span class="label">--s-9</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:80px"></div><div class="b"></div></div><span class="px">80px</span></div>
+        <div class="space-row"><span class="label">--s-10</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:96px"></div><div class="b"></div></div><span class="px">96px</span></div>
+        <div class="space-row"><span class="label">--s-11</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:128px"></div><div class="b"></div></div><span class="px">128px</span></div>
+        <div class="space-row"><span class="label">--s-12</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:160px"></div><div class="b"></div></div><span class="px">160px</span></div>
+        <div class="space-row"><span class="label">--s-13</span><div class="space-demo"><div class="b"></div><div class="gap" style="width:192px"></div><div class="b"></div></div><span class="px">192px</span></div>
+      </div>
+
+      <div class="do-dont" style="margin-top:var(--s-3)">
+        <div class="do">Use s-2 (16px) para padding interno de cards, s-3 (24px) para gap entre componentes irmãos, s-7+ (56px+) para separar seções.</div>
+        <div class="dont">Não invente valores fora da escala (12px, 20px, 36px). Se precisar de algo entre dois steps, é sinal de que o componente precisa ser repensado.</div>
+      </div>
+    </section>
+
+    <!-- ===== RAIOS / SOMBRAS ===== -->
+    <section class="section" id="radii">
+      <header>
+        <span class="eyebrow">Foundation · 05</span>
+        <h2>Raios &amp; <em>sombras</em></h2>
+        <p>Raios discretos, entre 0 e 8px na maioria dos casos. Marca premium se sustenta em formas mais retas, não em arredondamento exagerado. Sombras igualmente sutis, exceto na ação principal.</p>
+      </header>
+
+      <div class="sub"><h3>Raios em contexto</h3>
+        <p style="margin-top:6px">Trabalhamos com quatro raios funcionais. O "0px" não está na escala porque é o estado padrão (ausência de raio): aplicado em banners full-bleed editoriais, faixas de cor e seções que cobrem 100% da largura, onde qualquer arredondamento quebraria a sensação de continuidade.</p>
+      </div>
+      <div class="vitrine">
+        <div class="vitrine-card">
+          <div class="demo" style="border-radius:var(--r-sm)"></div>
+          <span class="label">--r-sm</span>
+          <span class="name">Sutil · 2px</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Inputs, células, units do countdown</span>
+        </div>
+        <div class="vitrine-card">
+          <div class="demo" style="border-radius:var(--r-md)"></div>
+          <span class="label">--r-md</span>
+          <span class="name">Padrão · 4px</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Botões, badges, cards de produto</span>
+        </div>
+        <div class="vitrine-card">
+          <div class="demo" style="border-radius:var(--r-lg)"></div>
+          <span class="label">--r-lg</span>
+          <span class="name">Confortável · 8px</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Heros, painéis grandes</span>
+        </div>
+        <div class="vitrine-card">
+          <div class="demo" style="border-radius:var(--r-pill);height:48px;background:linear-gradient(135deg,var(--blue-500),var(--blue-700))"></div>
+          <span class="label">--r-pill</span>
+          <span class="name">Pílula</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Apenas chips de filtro e tags pequenas</span>
+        </div>
+      </div>
+
+      <div class="sub"><h3>Sombras em contexto</h3></div>
+      <div class="vitrine">
+        <div class="vitrine-card" style="box-shadow:var(--shadow-1)">
+          <div class="demo"></div>
+          <span class="label">--shadow-1</span>
+          <span class="name">Repouso</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Cards estáticos, painéis informativos</span>
+        </div>
+        <div class="vitrine-card" style="box-shadow:var(--shadow-2)">
+          <div class="demo"></div>
+          <span class="label">--shadow-2</span>
+          <span class="name">Hover</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Card de produto em foco, dropdowns</span>
+        </div>
+        <div class="vitrine-card" style="box-shadow:var(--shadow-3)">
+          <div class="demo"></div>
+          <span class="label">--shadow-3</span>
+          <span class="name">Flutuação</span>
+          <span style="font-size:var(--fs-12);color:var(--ink-500)">Modais, sheets, menus full-bleed</span>
+        </div>
+        <div class="vitrine-card" style="box-shadow:var(--shadow-cta);background:var(--red-500);color:#fff;align-items:flex-start">
+          <div class="demo" style="background:transparent"></div>
+          <span class="label" style="color:rgba(255,255,255,.7)">--shadow-cta</span>
+          <span class="name" style="color:#fff">Ação principal</span>
+          <span style="font-size:var(--fs-12);color:rgba(255,255,255,.7)">Aura vermelha · apenas no CTA primário</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GRID ===== -->
+    <section class="section" id="grid">
+      <header>
+        <span class="eyebrow">Foundation · 06</span>
+        <h2><em>Grid</em></h2>
+        <p>Container 1240px máx · 12 colunas · gutter de 16px. Mobile colapsa para coluna única. Toda largura útil de componente é múltipla da coluna, sem larguras "soltas".</p>
+      </header>
+
+      <div class="grid-rule">
+        <div class="grid-rule__bar">
+          <div class="grid-rule__col" data-n="01"></div>
+          <div class="grid-rule__col" data-n="02"></div>
+          <div class="grid-rule__col" data-n="03"></div>
+          <div class="grid-rule__col" data-n="04"></div>
+          <div class="grid-rule__col" data-n="05"></div>
+          <div class="grid-rule__col" data-n="06"></div>
+          <div class="grid-rule__col" data-n="07"></div>
+          <div class="grid-rule__col" data-n="08"></div>
+          <div class="grid-rule__col" data-n="09"></div>
+          <div class="grid-rule__col" data-n="10"></div>
+          <div class="grid-rule__col" data-n="11"></div>
+          <div class="grid-rule__col" data-n="12"></div>
+        </div>
+        <div class="grid-rule__legend">
+          <span>Container 1240px</span>
+          <span>12 colunas</span>
+          <span>Gutter 16px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOTÕES ===== -->
+    <section class="section" id="buttons">
+      <header>
+        <span class="eyebrow">Componentes · 01</span>
+        <h2>Botões</h2>
+        <p>Apenas <strong>uma</strong> ação primária por tela. Vermelho é exclusivo da conversão; azul é apoio; ghost é exploratório.</p>
+      </header>
+
+      <div class="panel">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+          <button class="btn btn--primary btn--lg">Comprar agora</button>
+          <button class="btn btn--primary">Comprar agora</button>
+          <button class="btn btn--primary btn--sm">Comprar</button>
+          <button class="btn btn--secondary">Ver coleção</button>
+          <button class="btn btn--ghost">Saber mais</button>
+          <button class="btn btn--whisper">Adicionar à lista</button>
+        </div>
+        <div style="margin-top:var(--s-3);max-width:320px">
+          <button class="btn btn--primary btn--block btn--lg">Quero meu colchão · R$ 1.499</button>
+        </div>
+      </div>
+
+      <div class="sub"><h3>Quando usar</h3></div>
+      <div class="panel">
+        <table class="tokens">
+          <thead><tr><th>Variante</th><th>Quando usar</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td class="token">primary</td><td class="value">Ação que gera receita</td><td class="value">"Comprar agora", "Quero meu colchão"</td></tr>
+            <tr><td class="token">secondary</td><td class="value">Ação importante mas não-conversão</td><td class="value">"Ver coleção", "Comparar"</td></tr>
+            <tr><td class="token">ghost</td><td class="value">Ação opcional, terciária</td><td class="value">"Saber mais", "Detalhes técnicos"</td></tr>
+            <tr><td class="token">whisper</td><td class="value">Ação neutra dentro de cards</td><td class="value">"Adicionar à lista"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== BADGES ===== -->
+    <section class="section" id="badges">
+      <header>
+        <span class="eyebrow">Componentes · 02</span>
+        <h2>Selos <em>premium</em></h2>
+        <p>Etiquetas que comunicam qualidade, exclusividade e confiança, não desconto. O selo é uma assinatura, não um grito de promoção. Linhas finas, tipografia espacejada, sensação de boutique.</p>
+      </header>
+      <div class="panel">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+          <span class="badge badge--edition">Edição Limitada</span>
+          <span class="badge badge--quality">Selo de Qualidade Euro</span>
+          <span class="badge badge--limited">Coleção 2026</span>
+          <span class="badge badge--bestseller">O mais escolhido</span>
+          <span class="badge badge--made">Feito no Brasil</span>
+          <span class="badge badge--sealed">Garantia 5 anos</span>
+        </div>
+        <div style="margin-top:var(--s-3);display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+          <span class="badge badge--edition">Linha Kingsdown</span>
+          <span class="badge badge--quality">Tecnologia EcoMind</span>
+          <span class="badge badge--made">Tecido Premium</span>
+          <span class="badge badge--sealed">Made in Brazil</span>
+        </div>
+      </div>
+
+      <div class="do-dont" style="margin-top:var(--s-3)">
+        <div class="do">Selo é discreto, fino, espaçado. Comunica qualidade pelo restraint: quanto menos visualmente intrusivo, mais sofisticado.</div>
+        <div class="dont">Não usar fundos vibrantes em selos (amarelo neon, vermelho saturado em massa). Premium não grita.</div>
+      </div>
+    </section>
+
+    <!-- ===== ÍCONES ===== -->
+    <section class="section" id="icons">
+      <header>
+        <span class="eyebrow">Componentes · 03</span>
+        <h2><em>Ícones</em></h2>
+        <p>Biblioteca <strong>Lucide</strong> em estroke 1.5px. Linhas finas, geometria limpa, gramática consistente entre todos os 1.500+ ícones disponíveis. Combina perfeitamente com a tipografia DM Serif: ambos têm a mesma elegância delicada, sem peso desnecessário.</p>
+      </header>
+
+      <div class="sub">
+        <h3>Sistema</h3>
+        <p>Todos os ícones são SVG inline com cor herdada do contexto (<code>currentColor</code>). Stroke padrão 1.5px. Tamanhos canônicos abaixo.</p>
+      </div>
+
+      <div class="panel">
+        <div class="icon-sizes">
+          <div class="icon-size">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="lbl">16px · inline em texto</span>
+          </div>
+          <div class="icon-size">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="lbl">20px · botões, chips</span>
+          </div>
+          <div class="icon-size">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="lbl">24px · padrão</span>
+          </div>
+          <div class="icon-size">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="lbl">32px · selos, headers</span>
+          </div>
+          <div class="icon-size">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="lbl">48px · hero · stroke 1.25</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="icon-category"><h4>Sono &amp; descanso</h4><span>uso · LP, social, blog</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="name">bed-double</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/></svg><span class="name">bed</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg><span class="name">moon-star</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 5a3 3 0 0 0-5.997.125 4 4 0 0 0 2.526 5.77 4 4 0 0 0 .614 7.834 1 1 0 1 1 1.857.514"/><path d="M3 21h18"/><path d="M14 21a2 2 0 1 0-4 0"/></svg><span class="name">cloud-moon</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="name">clock</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg><span class="name">sunrise</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/></svg><span class="name">alarm-clock</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"/><path d="M5 21v-2"/><path d="M19 21v-2"/></svg><span class="name">sofa</span></div>
+      </div>
+
+      <div class="icon-category"><h4>Confiança &amp; garantia</h4><span>uso · checkout, hero, footer</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span class="name">shield-check</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg><span class="name">badge-check</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span class="name">award</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"/><path d="M11 12 5.12 2.2"/><path d="m13 12 5.88-9.8"/><path d="M8 7h8"/><circle cx="12" cy="17" r="5"/><path d="M12 18v-2h-.5"/></svg><span class="name">medal</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg><span class="name">lock-keyhole</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span class="name">check-circle</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="name">shield</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg><span class="name">trending-up</span></div>
+      </div>
+
+      <div class="icon-category"><h4>Comércio &amp; entrega</h4><span>uso · PDP, checkout, cart</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg><span class="name">shopping-cart</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="name">shopping-bag</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg><span class="name">credit-card</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span class="name">truck</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" x2="12" y1="22" y2="12"/></svg><span class="name">package</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/></svg><span class="name">store</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V6"/><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/></svg><span class="name">filter</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="name">search</span></div>
+      </div>
+
+      <div class="icon-category"><h4>Pagamento</h4><span>uso · checkout, ofertas</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><span class="name">banknote</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg><span class="name">wallet</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><span class="name">percent</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="name">dollar-sign</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4"/><path d="M12 16V8"/></svg><span class="name">arrow-up-circle</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12"/><path d="M17 9H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H7"/></svg><span class="name">price-tag</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"/><path d="M9.5 19a2.4 2.4 0 0 1-1.4-.7L2.7 12.7a1 1 0 0 1-.2-1L4 7l4.6-1.5a1 1 0 0 1 1 .2l5.4 5.6a2.4 2.4 0 0 1 0 3.4L11.4 19"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg><span class="name">tags</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2Z"/><circle cx="12" cy="14" r="3"/></svg><span class="name">folder-cog</span></div>
+      </div>
+
+      <div class="icon-category"><h4>Avaliação &amp; social</h4><span>uso · reviews, prova social</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span class="name">star</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span class="name">star-filled</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg><span class="name">heart</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg><span class="name">thumbs-up</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="name">message-square</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span class="name">message-circle</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="name">users</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg><span class="name">messages</span></div>
+      </div>
+
+      <div class="icon-category"><h4>Casa &amp; ambiente</h4><span>uso · LP, blog, fotografia</span></div>
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="name">home</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0l.17-.1a2 2 0 0 1 1.8 0L12 6l3 6-1.07.53a2 2 0 0 0-1.79 0l-.21.1a2 2 0 0 1-1.79 0L10 12l-2 4 2.36.4a6 6 0 0 0 5.78-2.34l3.7-4.93a2 2 0 0 1 3.7 1.06v6.05a2 2 0 0 1-2 2h-1.49"/></svg><span class="name">lamp</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M3 11h18v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M5 18v2"/><path d="M19 18v2"/><path d="M9 6V4"/><path d="M15 6V4"/></svg><span class="name">lamp-desk</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><span class="name">monitor</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22a8 8 0 0 1 16 0"/><circle cx="10" cy="9" r="4"/><path d="M19 3h2"/><path d="M21 7h-2"/><path d="M19 11v-2"/></svg><span class="name">user-cog</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><span class="name">sun</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 7.5 12 3l9 4.5"/><path d="M3 7.5v9L12 21l9-4.5v-9"/></svg><span class="name">box</span></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22v-6"/><path d="M21 22v-6"/><path d="M3 16v-1a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v1"/><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/><path d="M5 16h14"/></svg><span class="name">bed-king</span></div>
+      </div>
+
+      <div class="sub"><h3>Onde aplicar</h3></div>
+      <div class="icon-context">
+        <div class="icon-ctx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div class="desc"><strong>Selos de confiança</strong>24px, dentro do círculo azul, branco</div>
+        </div>
+        <div class="icon-ctx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <div class="desc"><strong>Botões / formulários</strong>20px, à esquerda do label, mesma cor do texto</div>
+        </div>
+        <div class="icon-ctx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V6"/><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/></svg>
+          <div class="desc"><strong>Filtros / nav</strong>16px, inline em label uppercase</div>
+        </div>
+        <div class="icon-ctx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+          <div class="desc"><strong>Hero / blocos editoriais</strong>48px com stroke 1.25 · azul-500 ou champagne</div>
+        </div>
+      </div>
+
+      <div class="do-dont" style="margin-top:var(--s-3)">
+        <div class="do">Use sempre stroke 1.5 (1.25 acima de 32px). Mantenha cor por <code>currentColor</code> para que o ícone herde do contexto. Padding do círculo no selo de confiança: 13px (resulta em ícone 22px num círculo 48px).</div>
+        <div class="dont">Não misture estilos de biblioteca (Lucide outline com FontAwesome solid no mesmo bloco). Não use ícones decorativos sem função: cada ícone deve reforçar uma palavra ou ação adjacente.</div>
+      </div>
+
+      <div style="margin-top:var(--s-3);padding:var(--s-3);background:var(--ink-50);border-left:3px solid var(--gold-500);font-size:var(--fs-13, 13px);color:var(--ink-700)">
+        <strong style="font-family:var(--font-display);font-size:var(--fs-16);color:var(--ink-900);display:block;margin-bottom:4px">Como adicionar mais ícones</strong>
+        Catálogo completo em <a href="https://lucide.dev/icons" target="_blank">lucide.dev/icons</a> (1.500+ ícones, MIT). Copie o SVG, ajuste <code>stroke-width="1.5"</code> e adicione ao componente desejado. Em React, instale <code>lucide-react</code> e use <code>&lt;ShieldCheck size={24} strokeWidth={1.5} /&gt;</code>.
+      </div>
+    </section>
+
+    <!-- ===== FORMULÁRIOS ===== -->
+    <section class="section" id="forms">
+      <header>
+        <span class="eyebrow">Componentes · 04</span>
+        <h2>Formulários</h2>
+        <p>Inputs altos (56px), label em uppercase espacejado, foco em azul. Em LP, máximo 4 campos. Em checkout, 1 campo por linha em mobile, 2 em desktop.</p>
+      </header>
+      <div class="panel" style="max-width:520px">
+        <div style="display:flex;flex-direction:column;gap:var(--s-3)">
+          <div class="field">
+            <label>Nome completo</label>
+            <input class="input" type="text" placeholder="Como aparece no documento" />
+          </div>
+          <div class="field">
+            <label>WhatsApp</label>
+            <input class="input" type="tel" placeholder="(00) 00000-0000" />
+          </div>
+          <div class="field">
+            <label>Tamanho</label>
+            <select class="select">
+              <option>Selecione…</option>
+              <option>Solteiro · 88×188</option>
+              <option>Casal · 138×188</option>
+              <option>Queen · 158×198</option>
+              <option>King · 193×203</option>
+            </select>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" /> Quero receber novidades exclusivas no WhatsApp
+          </label>
+          <button class="btn btn--primary btn--block btn--lg">Quero meu colchão</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARD DE PRODUTO ===== -->
+    <section class="section" id="product-card">
+      <header>
+        <span class="eyebrow">E-commerce · 01</span>
+        <h2>Card de produto</h2>
+        <p>O elemento mais visto do e-commerce. Hierarquia: linha de coleção → foto → nome em DM Serif → estrelas → preço de/por → parcelamento → CTA.</p>
+      </header>
+
+      <div class="preview-grid" style="grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))">
+        <div class="product-card">
+          <div class="thumb">
+            <div class="badges">
+              <span class="badge badge--edition">Edição 2026</span>
+              <span class="badge badge--bestseller">O mais escolhido</span>
+            </div>
+          </div>
+          <div class="body">
+            <span class="line">Linha Euro · Premium</span>
+            <div class="name">Colchão Super Luxo Intermediário</div>
+            <div class="reviews"><span class="stars">★★★★★</span> <span>4.8 · 1.247 avaliações</span></div>
+            <div class="price">
+              <span class="from">De: R$ 1.999,00</span>
+              <span class="to">Por: R$ 1.499,00</span>
+              <span class="installment">10x R$ 149,90 <strong>sem juros</strong></span>
+            </div>
+            <div class="footer">
+              <button class="btn btn--primary btn--block">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="thumb">
+            <div class="badges"><span class="badge badge--quality badge--on-image">Selo de Qualidade Euro</span></div>
+          </div>
+          <div class="body">
+            <span class="line">Linha Kingsdown</span>
+            <div class="name">Colchão Premium Intermediário</div>
+            <div class="reviews"><span class="stars">★★★★☆</span> <span>4.6 · 382 avaliações</span></div>
+            <div class="price">
+              <span class="from" aria-hidden="true">&nbsp;</span>
+              <span class="to">R$ 2.299,00</span>
+              <span class="installment">10x R$ 229,90 <strong>sem juros</strong></span>
+            </div>
+            <div class="footer">
+              <button class="btn btn--primary btn--block">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="thumb">
+            <div class="badges"><span class="badge badge--limited">Coleção 2026</span></div>
+          </div>
+          <div class="body">
+            <span class="line">Linha EcoMind</span>
+            <div class="name">Colchão Original Intermediário</div>
+            <div class="reviews"><span class="stars">★★★★★</span> <span>4.9 · 2.103 avaliações</span></div>
+            <div class="price">
+              <span class="from">De: R$ 1.299,00</span>
+              <span class="to">Por: R$ 999,00</span>
+              <span class="installment">10x R$ 99,90 <strong>sem juros</strong></span>
+            </div>
+            <div class="footer">
+              <button class="btn btn--primary btn--block">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FILTROS ===== -->
+    <section class="section" id="filters">
+      <header>
+        <span class="eyebrow">E-commerce · 02</span>
+        <h2>Filtros</h2>
+        <p>Filtros táticos do nicho colchão: tamanho, firmeza, linha, faixa de preço. Em mobile, abrir como sheet bottom-up.</p>
+      </header>
+      <div class="panel">
+        <div class="filter-group">
+          <h5>Tamanho</h5>
+          <div class="chip-row" data-mode="single">
+            <span class="chip">Solteiro</span>
+            <span class="chip chip--active">Casal</span>
+            <span class="chip">Queen</span>
+            <span class="chip">King</span>
+            <span class="chip">Super King</span>
+          </div>
+        </div>
+        <div class="filter-group" style="margin-top:var(--s-3)">
+          <h5>Firmeza</h5>
+          <div class="chip-row" data-mode="single">
+            <span class="chip">Macio</span>
+            <span class="chip chip--active">Intermediário</span>
+            <span class="chip">Firme</span>
+            <span class="chip">Extra firme</span>
+          </div>
+        </div>
+        <div class="filter-group" style="margin-top:var(--s-3)">
+          <h5>Linha <span style="font-size:10px;font-weight:400;letter-spacing:0.06em;text-transform:none;color:var(--ink-500);margin-left:6px">(múltipla escolha)</span></h5>
+          <div class="chip-row" data-mode="multi">
+            <span class="chip">Euro</span>
+            <span class="chip">Kingsdown</span>
+            <span class="chip">EcoMind</span>
+            <span class="chip">Super Luxo</span>
+            <span class="chip">Premium</span>
+          </div>
+        </div>
+        <div class="filter-group" style="margin-top:var(--s-3)">
+          <h5>Faixa de preço <span style="font-size:10px;font-weight:400;letter-spacing:0.06em;text-transform:none;color:var(--ink-500);margin-left:6px">(múltipla escolha)</span></h5>
+          <div class="chip-row" data-mode="multi">
+            <span class="chip">Até R$ 999</span>
+            <span class="chip">R$ 1.000 a 1.999</span>
+            <span class="chip">R$ 2.000 a 2.999</span>
+            <span class="chip">R$ 3.000+</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TABELA COMPARATIVA ===== -->
+    <section class="section" id="compare">
+      <header>
+        <span class="eyebrow">E-commerce · 03</span>
+        <h2>Tabela comparativa</h2>
+        <p>Reduz dúvida e tempo de decisão. A coluna recomendada vem destacada com bordas em champagne: sutil, mas inequívoca.</p>
+      </header>
+      <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Original</th>
+            <th class="recommended"><span class="rec-tag">Recomendado</span><br/>Super Luxo</th>
+            <th>Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Densidade</td>
+            <td>D33</td>
+            <td class="highlight">D45 + molas pocket</td>
+            <td>Molas ensacadas</td>
+          </tr>
+          <tr>
+            <td>Firmeza</td>
+            <td>Intermediária</td>
+            <td class="highlight">Intermediária-firme</td>
+            <td>Firme</td>
+          </tr>
+          <tr>
+            <td>Garantia</td>
+            <td>3 anos</td>
+            <td class="highlight">5 anos</td>
+            <td>5 anos</td>
+          </tr>
+          <tr>
+            <td>Tecido antialérgico</td>
+            <td class="yes">✓</td>
+            <td class="highlight yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Suporte lombar reforçado</td>
+            <td class="no">·</td>
+            <td class="highlight yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Tecnologia de resfriamento</td>
+            <td class="no">·</td>
+            <td class="highlight yes">✓</td>
+            <td class="no">·</td>
+          </tr>
+          <tr class="price-row">
+            <td>Preço</td>
+            <td>R$ 999</td>
+            <td class="highlight">R$ 1.499</td>
+            <td>R$ 2.299</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ===== SELOS DE CONFIANÇA ===== -->
+    <section class="section" id="trust">
+      <header>
+        <span class="eyebrow">E-commerce · 04</span>
+        <h2>Selos de confiança</h2>
+        <p>Aparecem perto do CTA, no rodapé e no checkout. Tipografia em DM Serif para parecer assinatura, não selo de varejo. Reusáveis entre LP e e-commerce.</p>
+      </header>
+      <div class="trust-row">
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">Garantia até 5 anos</span>
+            <span class="sub">Estrutura e molas</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">Site oficial</span>
+            <span class="sub">Compra 100% segura</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">Entrega nacional</span>
+            <span class="sub">Para todo o Brasil</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">10× sem juros</span>
+            <span class="sub">Em todos os modelos</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">+50 mil clientes</span>
+            <span class="sub">Avaliação média 4.8</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+          </div>
+          <div class="text">
+            <span class="label">Mais espaço</span>
+            <span class="sub">Box com baú integrado</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HERO LP ===== -->
+    <section class="section" id="hero">
+      <header>
+        <span class="eyebrow">Landing Page · 01</span>
+        <h2>Hero</h2>
+        <p>Carrega a promessa central da marca: <em>celebrar</em> o sono e os anos de qualidade. Headline em DM Serif italic, palavra-marca em champagne, CTA dominante em vermelho.</p>
+      </header>
+      <div class="lp-hero">
+        <span class="eyebrow">Coleção 2026 · Linha Super Luxo</span>
+        <h1><em>Celebre</em> as noites<br/>que você merece.</h1>
+        <p>Combinação de design elegante e tecnologia de ponta. Colchões com até 5 anos de garantia, suporte ergonômico e tecido antialérgico. O cuidado que você sente em cada noite.</p>
+        <div class="actions">
+          <button class="btn btn--primary btn--lg">Quero meu colchão</button>
+          <button class="btn btn--ghost-light btn--lg">Ver a coleção</button>
+        </div>
+        <div class="seal-row">
+          <span><strong>Garantia</strong> até 5 anos</span>
+          <span><strong>Parcelamento</strong> 10× sem juros</span>
+          <span><strong>Entrega</strong> para todo o Brasil</span>
+          <span><strong>Site oficial</strong> compra segura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROVA SOCIAL ===== -->
+    <section class="section" id="social-proof">
+      <header>
+        <span class="eyebrow">Landing Page · 02</span>
+        <h2>Prova social</h2>
+        <p>Depoimentos editoriais. Citação em DM Serif italic com filete dourado, autor com nome real e contexto, modelo comprado em destaque visual. Sem genéricos: sempre nominal.</p>
+      </header>
+      <div style="display:flex;flex-direction:column;gap:var(--s-3)">
+        <div class="testimonial">
+          <div class="body">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Em três noites a dor lombar sumiu. Fui dormir em domingo de Páscoa e acordei pensando: finalmente, um colchão que entende a coluna."</blockquote>
+            <div class="author">
+              <div class="avatar"></div>
+              <div>
+                <div class="name">Beatriz Magalhães</div>
+                <div class="role">Arquiteta · São Paulo · Compra verificada em 03/2026</div>
+              </div>
+            </div>
+          </div>
+          <div class="product" data-img="produto">
+            <div class="tag">Modelo comprado</div>
+            <div class="pname">Super Luxo</div>
+            <div class="verified">★ Compra verificada</div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <div class="body">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Pesquisei seis lojas. Foi o atendimento da Euro que decidiu: me explicaram cada material com paciência. O colchão chegou no dia exato e a sensação é de hotel, todo dia."</blockquote>
+            <div class="author">
+              <div class="avatar"></div>
+              <div>
+                <div class="name">Rodrigo Mendes</div>
+                <div class="role">Médico · Curitiba · Compra verificada em 01/2026</div>
+              </div>
+            </div>
+          </div>
+          <div class="product" data-img="hero1">
+            <div class="tag">Modelo comprado</div>
+            <div class="pname">Premium Intermediário</div>
+            <div class="verified">★ Compra verificada</div>
+          </div>
+        </div>
+
+        <div class="testimonial">
+          <div class="body">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Casa nova, cama nova, vida nova. O quarto inteiro pareceu maior depois que o colchão chegou. Não sei explicar, mas quem dorme aqui entende."</blockquote>
+            <div class="author">
+              <div class="avatar"></div>
+              <div>
+                <div class="name">Camila &amp; Tiago Ribeiro</div>
+                <div class="role">Casal · Belo Horizonte · Compra verificada em 02/2026</div>
+              </div>
+            </div>
+          </div>
+          <div class="product" data-img="hero3">
+            <div class="tag">Modelo comprado</div>
+            <div class="pname">Original Queen</div>
+            <div class="verified">★ Compra verificada</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <header>
+        <span class="eyebrow">Landing Page · 03</span>
+        <h2>FAQ</h2>
+        <p>Quebra a objeção antes do checkout. Sempre 5 a 8 perguntas, ordenadas por prioridade de objeção (entrega, garantia, parcelamento, tamanho, conforto).</p>
+      </header>
+      <div class="panel">
+        <details class="faq-item" open>
+          <summary>Quanto tempo é a garantia?</summary>
+          <p>Cobrimos até 5 anos para estrutura e molas dos modelos da Linha Super Luxo. Os demais modelos têm garantia de 3 anos. Não cobre desgaste superficial do tecido após uso prolongado.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Qual o prazo de entrega?</summary>
+          <p>Entregamos em todo o Brasil. Capitais e regiões metropolitanas em até 5 dias úteis; demais regiões em 8 a 12 dias úteis.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso parcelar sem juros?</summary>
+          <p>Sim. Em todos os modelos, em até 10× sem juros nos cartões aceitos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como escolher o tamanho certo?</summary>
+          <p>Solteiro 88×188, Casal 138×188, Queen 158×198, King 193×203. Em dúvida, fale com nossa consultoria. Atendemos por WhatsApp e ajudamos você a decidir pelo modelo certo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>O que diferencia a Linha Super Luxo?</summary>
+          <p>Densidade D45 com molas pocket independentes, suporte lombar reforçado, tecnologia de resfriamento e tecido antialérgico premium. É a expressão máxima do cuidado Euro Colchões.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Vocês têm site oficial e compra segura?</summary>
+          <p>Sim. eurocolchoes.com é nosso único site oficial. Toda compra tem certificado SSL, processamento de pagamento auditado e nota fiscal eletrônica.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== COUNTDOWN ===== -->
+    <section class="section" id="countdown">
+      <header>
+        <span class="eyebrow">Landing Page · 04</span>
+        <h2>Countdown</h2>
+        <p>Usar com critério: apenas em ofertas reais e por tempo realmente limitado. Falsa escassez destrói a percepção premium e perde recompra.</p>
+      </header>
+      <div class="countdown-wrap">
+        <div class="countdown-text">
+          <div class="eyebrow">Live de aniversário · termina em</div>
+          <h3>Celebre conosco.</h3>
+          <p>Condições especiais até o fim da live. Depois disso, voltamos ao preço de tabela.</p>
+        </div>
+        <div class="countdown" id="countdownDemo" aria-live="polite">
+          <div class="unit"><div class="num" data-d>02</div><div class="lbl">Dias</div></div>
+          <div class="sep">:</div>
+          <div class="unit"><div class="num" data-h>14</div><div class="lbl">Horas</div></div>
+          <div class="sep">:</div>
+          <div class="unit"><div class="num" data-m>38</div><div class="lbl">Min</div></div>
+          <div class="sep">:</div>
+          <div class="unit"><div class="num" data-s>52</div><div class="lbl">Seg</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HIERARQUIA DE CTA ===== -->
+    <section class="section" id="cta-hier">
+      <header>
+        <span class="eyebrow">Diretrizes · 01</span>
+        <h2>Hierarquia de CTA</h2>
+        <p>Em qualquer tela: 1 CTA primário (vermelho), até 1 secundário (azul ou ghost). Mais que isso compete e derruba conversão.</p>
+      </header>
+      <div class="cta-hierarchy">
+        <div class="level">
+          <h5>Nível 1 · Conversão</h5>
+          <button class="btn btn--primary">Comprar agora</button>
+          <p>Vermelho · 1 por tela · ação que gera receita</p>
+        </div>
+        <div class="level">
+          <h5>Nível 2 · Apoio</h5>
+          <button class="btn btn--secondary">Ver coleção</button>
+          <p>Azul · navegação ou exploração</p>
+        </div>
+        <div class="level">
+          <h5>Nível 3 · Terciário</h5>
+          <button class="btn btn--ghost">Saber mais</button>
+          <p>Ghost · ação opcional, baixo peso</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOTOGRAFIA ===== -->
+    <section class="section" id="photo">
+      <header>
+        <span class="eyebrow">Diretrizes · 02</span>
+        <h2>Fotografia</h2>
+        <p>O banco editorial da Euro tem assinatura clara: fundo azul saturado e liso, modelo em primeiro plano com cor sólida vibrante (vinho, vermelho), produto centralizado, luz suave de estúdio. Esse é o estilo a seguir em qualquer nova captação.</p>
+      </header>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-3)">
+        <div class="panel" style="padding:0;overflow:hidden">
+          <div style="aspect-ratio:4/3;background-image:url('assets/hero-1.jpg');background-size:cover;background-position:center"></div>
+          <div style="padding:var(--s-3)">
+            <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-700);margin-bottom:6px">Referência 01 · fundo azul</div>
+            <div class="serif" style="font-size:var(--fs-20);letter-spacing:-0.01em;margin-bottom:6px">Modelo + produto · estúdio</div>
+            <p style="font-size:var(--fs-14);color:var(--ink-600)">Modelo em primeiro plano, vestida em tom contrastante (vinho), interage com o colchão de forma natural. Cama box azul-marinho repete a cor do fundo, criando continuidade. Logo discreta no produto.</p>
+          </div>
+        </div>
+        <div class="panel" style="padding:0;overflow:hidden">
+          <div style="aspect-ratio:4/3;background-image:url('assets/foto-vermelha.jpg');background-size:cover;background-position:center top"></div>
+          <div style="padding:var(--s-3)">
+            <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-700);margin-bottom:6px">Referência 02 · fundo vermelho</div>
+            <div class="serif" style="font-size:var(--fs-20);letter-spacing:-0.01em;margin-bottom:6px">Modelo + produto · drapeado</div>
+            <p style="font-size:var(--fs-14);color:var(--ink-600)">Variação cromática em vermelho (cor de ação da marca). Drapeado de fundo cria volume e intimidade, modelo segura o produto como manifesto. Use o vermelho com parcimônia, em campanhas específicas ou peças de aniversário.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub"><h3>Princípios herdados</h3></div>
+      <div class="do-dont">
+        <div class="do">Fundo monocromático saturado, azul ou vermelho. Modelo único em primeiro plano. Roupa em cor sólida (vinho, vermelho, off-white, azul-marinho), nunca estampa que distrai. Luz frontal suave, sem sombras agressivas.</div>
+        <div class="dont">Fundos texturizados, gradientes confusos, cenários domésticos misturados. Mais de uma pessoa em cena. Logo ou tag em destaque: a marca aparece pelo conjunto, não pelo selo.</div>
+        <div class="do">Azul como padrão editorial. Vermelho reservado para campanhas, aniversários e peças de ação. Para PDP: pode incluir foto de produto ambientado em quarto real (como o Box com Baú em quarto bege) quando o objetivo é mostrar uso e contexto.</div>
+        <div class="dont">Misturar fundo azul e vermelho no mesmo bloco visual. Editorial de marca escolhe um. PDP/contexto pode usar ambiente real, mas separado do editorial.</div>
+      </div>
+    </section>
+
+    <!-- ===== PERFORMANCE ===== -->
+    <section class="section" id="performance">
+      <header>
+        <span class="eyebrow">Diretrizes · 03</span>
+        <h2>Diretrizes de <em>performance</em></h2>
+        <p>O kit é tático e estratégico. Aqui mora o tático: o que fazer para cada output converter mais sem trair o posicionamento premium.</p>
+      </header>
+
+      <div class="sub"><h3>E-commerce</h3></div>
+      <div class="do-dont">
+        <div class="do">Card com altura idêntica entre produtos. Preço "por" sempre maior que o "de". Botão de comprar sempre vermelho e na mesma posição em todos os cards. Selos de qualidade acima do nome.</div>
+        <div class="dont">Cards com alturas diferentes. CTA escondido ou abaixo da dobra do card. Mais de 2 selos no mesmo produto. Selo gritando desconto em vez de qualidade.</div>
+      </div>
+
+      <div class="sub"><h3>Landing Page</h3></div>
+      <div class="do-dont">
+        <div class="do">CTA visível antes do scroll em mobile. Formulário com no máximo 4 campos. Prova social acima do FAQ. Countdown apenas com oferta real e datada.</div>
+        <div class="dont">Formulário longo (CEP, endereço, RG no topo da LP). Múltiplos CTAs vermelhos. Hero com mais de uma promessa. Countdown perpétuo (cliente premium percebe e perde confiança).</div>
+      </div>
+
+      <div class="sub"><h3>Criativo estático</h3></div>
+      <div class="do-dont">
+        <div class="do">Uma ideia por peça. Headline em até 6 palavras, em DM Serif. Logo Euro Colchões sempre presente. Preço em caixa branca translúcida com filete (estilo da peça EuroHug).</div>
+        <div class="dont">Várias ofertas no mesmo criativo. Texto explicando o produto (criativo é o ímã, LP é o vendedor). Logo gigante centralizado. Tipografia sans-serif onde deveria ser serif.</div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer style="padding:var(--s-7) 0;border-top:1px solid var(--ink-200);margin-top:var(--s-9);font-size:var(--fs-12);color:var(--ink-500);font-family:var(--font-numeric);letter-spacing:0.06em;">
+      Euro Colchões · UI Kit v0.2 · 2026 · DM Serif Display + Roboto · base 8px · #AC2629 / #344D66
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Sidebar dinâmica · toggle abrir/fechar (drawer em mobile, colapso em desktop)
+  (function(){
+    var KEY = 'eurocolchoes-uikit-menu';
+    var btn = document.getElementById('menuToggle');
+    if (!btn) return;
+
+    var mqMobile = window.matchMedia('(max-width: 768px)');
+
+    // Estado inicial: respeita localStorage; se vazio, mobile começa fechado, desktop aberto
+    var saved = localStorage.getItem(KEY);
+    var initialCollapsed = saved ? (saved === 'collapsed') : mqMobile.matches;
+    if (initialCollapsed) {
+      document.body.classList.add('menu-collapsed');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Backdrop · só visível em mobile via CSS
+    var backdrop = document.createElement('div');
+    backdrop.className = 'menu-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+
+    function setCollapsed(collapsed, persist){
+      document.body.classList.toggle('menu-collapsed', collapsed);
+      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      if (persist) localStorage.setItem(KEY, collapsed ? 'collapsed' : 'open');
+    }
+
+    btn.addEventListener('click', function(){
+      setCollapsed(!document.body.classList.contains('menu-collapsed'), true);
+    });
+
+    backdrop.addEventListener('click', function(){
+      setCollapsed(true, true);
+    });
+
+    // Em mobile, clicar num link da sidebar fecha o drawer
+    document.querySelectorAll('.sidebar nav a').forEach(function(a){
+      a.addEventListener('click', function(){
+        if (mqMobile.matches) setCollapsed(true, true);
+      });
+    });
+
+    // ESC fecha em mobile
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && mqMobile.matches && !document.body.classList.contains('menu-collapsed')) {
+        setCollapsed(true, true);
+      }
+    });
+
+    // Quando muda breakpoint, reseta sem persistir (volta ao default do tamanho atual)
+    mqMobile.addEventListener('change', function(e){
+      if (!localStorage.getItem(KEY)) {
+        setCollapsed(e.matches, false);
+      }
+    });
+  })();
+
+  // Filtros animados (single/multi)
+  document.querySelectorAll('.chip-row').forEach(function(row){
+    var mode = row.dataset.mode || 'single';
+    row.addEventListener('click', function(e){
+      var chip = e.target.closest('.chip');
+      if (!chip) return;
+      if (mode === 'single') {
+        row.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('chip--active'); });
+        chip.classList.add('chip--active');
+      } else {
+        chip.classList.toggle('chip--active');
+      }
+    });
+  });
+
+  // Countdown funcional · exemplo com 2d 14h 38m 52s a partir de agora
+  (function(){
+    var target = new Date();
+    target.setSeconds(target.getSeconds() + (2*86400 + 14*3600 + 38*60 + 52));
+    var d = document.querySelector('[data-d]');
+    var h = document.querySelector('[data-h]');
+    var m = document.querySelector('[data-m]');
+    var s = document.querySelector('[data-s]');
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      var now = new Date();
+      var diff = Math.max(0, Math.floor((target - now)/1000));
+      d.textContent = pad(Math.floor(diff/86400));
+      h.textContent = pad(Math.floor((diff%86400)/3600));
+      m.textContent = pad(Math.floor((diff%3600)/60));
+      s.textContent = pad(diff%60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+</body>
+</html>
